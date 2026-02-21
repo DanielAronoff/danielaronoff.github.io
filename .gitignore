@@ -68,5 +68,9 @@ Desktop.ini
 *.log
 npm-debug.log*
 
+<<<<<<< HEAD
 # Local migration backup
+=======
+# Local backup from Jekyll migration
+>>>>>>> codex/hugo-migration
 _old_site_backup/
