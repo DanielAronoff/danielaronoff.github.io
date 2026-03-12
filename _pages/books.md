@@ -11,13 +11,6 @@ lede: Two books on secular stagnation, accumulation, and the financial crisis, p
 <section class="book-list">
   {% for book in site.data.books %}
     <article class="book-entry">
-      <figure class="book-cover-wrap" aria-label="{{ book.title }}">
-        {% if book.cover_image %}
-          <img class="book-cover" src="{{ book.cover_image | relative_url }}" alt="Cover of {{ book.title }}">
-        {% else %}
-          <div class="book-cover-placeholder" role="img" aria-label="Cover image placeholder for {{ book.title }}"></div>
-        {% endif %}
-      </figure>
       <div class="book-content">
         <div class="book-meta">{{ book.publisher }} · {{ book.year }}</div>
         <h2>{{ book.title }}</h2>
@@ -33,6 +26,13 @@ lede: Two books on secular stagnation, accumulation, and the financial crisis, p
           {% endfor %}
         </div>
       </div>
+      <figure class="book-cover-wrap" aria-label="{{ book.title }}">
+        {% if book.cover_image %}
+          <img class="book-cover" src="{{ book.cover_image | relative_url }}" alt="Cover of {{ book.title }}">
+        {% else %}
+          <div class="book-cover-placeholder" role="img" aria-label="Cover image placeholder for {{ book.title }}"></div>
+        {% endif %}
+      </figure>
     </article>
   {% endfor %}
 </section>
