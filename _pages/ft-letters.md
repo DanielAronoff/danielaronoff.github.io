@@ -37,7 +37,7 @@ lede: A public, searchable index of my letters to the Financial Times, grouped b
             <li
               class="letter-item"
               data-ft-search-item
-              data-search-index="{{ letter.title | downcase }} {{ letter.date | downcase }} {{ letter.source_filename | downcase }} {{ letter.slug | downcase }}"
+              data-search-index="{{ letter.title | downcase | xml_escape }} {{ letter.date | downcase | xml_escape }} {{ letter.source_filename | downcase | xml_escape }} {{ letter.slug | downcase | xml_escape }}"
             >
               <div class="letter-meta">{{ letter.date | date: "%B %-d, %Y" }}</div>
               <h3><a href="{{ letter.pdf | relative_url }}">{{ letter.title }}</a></h3>
