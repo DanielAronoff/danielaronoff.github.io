@@ -25,6 +25,13 @@ Build a production preview:
 
 ```bash
 RBENV_VERSION=3.2.3 /Users/danielaronoff/.rbenv/shims/bundle exec jekyll build
+
+Render static HTML locally into `docs/` for deployment without GitHub Actions:
+
+```bash
+RBENV_VERSION=3.2.3 /Users/danielaronoff/.rbenv/shims/bundle exec jekyll build -d docs
+touch docs/.nojekyll
+```
 ```
 
 ## Where editable content lives
@@ -110,10 +117,42 @@ After editing overrides, rerun:
 python3 scripts/build_ft_index.py
 ```
 
-## Deploying with GitHub Pages
+## Deploying with GitHub Pages (no Actions build)
 
-GitHub Pages deploys through the workflow at:
+This site is now built locally and published as pre-rendered static HTML.
 
-- [`.github/workflows/pages.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/.github/workflows/pages.yml)
+Recommended flow (single branch + `docs/`):
 
-On pushes to `main`, the workflow installs Ruby dependencies, builds the Jekyll site, and deploys the generated `_site` directory to GitHub Pages.
+1. Generate and stage the static site:
+
+```bash
+RBENV_VERSION=3.2.3 /Users/danielaronoff/.rbenv/shims/bundle exec jekyll build -d docs
+touch docs/.nojekyll
+git add docs
+git commit -m "Update static site output"
+```
+
+2. In GitHub repository settings: Pages > Build and deployment > Source = `Deploy from a branch` > branch `main` > folder `/docs`.
+
+3. Push:
+
+```bash
+git push
+```
+
+Optional flow (HTML-only branch):
+
+1. Build to `docs/` as above.
+2. Copy `docs/` into a dedicated branch (for example `gh-pages`) and push that branch instead.
+
+This gives you a source branch with Jekyll and a deployable HTML branch.
+
+## Publishing script
+
+Use the helper script:
+
+```bash
+./scripts/build_static_pages.sh
+```
+
+It runs the local Jekyll build, writes to `docs/`, and writes `docs/.nojekyll` to force static serving.
