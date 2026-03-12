@@ -192,7 +192,7 @@
   border: var(--rule);
   padding: var(--space-2);
   background: #f8f6f0;
-  max-width: 9.5rem;
+  max-width: 8rem;
   width: 100%;
 }
 
@@ -225,7 +225,7 @@
 
 @media (min-width: 52rem) {
   .book-entry {
-    grid-template-columns: minmax(0, 1fr) minmax(9rem, 10rem);
+    grid-template-columns: minmax(0, 1fr) minmax(8rem, 9rem);
     gap: var(--space-5);
     align-items: start;
   }
