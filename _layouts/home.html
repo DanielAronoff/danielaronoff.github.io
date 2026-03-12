@@ -1,0 +1,67 @@
+---
+layout: default
+---
+<section class="home-hero">
+  <div class="home-hero__content">
+    <p class="section-label">Academic website</p>
+    <h1>{{ page.title }}</h1>
+    <p class="hero-subtitle">{{ page.subtitle }}</p>
+    <div class="hero-statement">
+      {{ content }}
+    </div>
+    <div class="hero-meta">
+      <section class="meta-block">
+        <h2>Quick links</h2>
+        <ul class="action-list">
+          {% assign quick_links = site.pages | where_exp: "item", "item.nav == true and item.url != '/'" | sort: "nav_order" %}
+          {% for item in quick_links %}
+            <li><a class="button-link" href="{{ item.url | relative_url }}">{{ item.nav_title | default: item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </section>
+      <section class="meta-block">
+        <h2>Contact</h2>
+        <dl class="contact-list">
+          <div>
+            <dt>{{ site.data.contact.academic_inquiries.label }}</dt>
+            <dd><a href="mailto:{{ site.data.contact.academic_inquiries.email }}">{{ site.data.contact.academic_inquiries.email }}</a></dd>
+          </div>
+          <div>
+            <dt>{{ site.data.contact.general_inquiries.label }}</dt>
+            <dd><a href="mailto:{{ site.data.contact.general_inquiries.email }}">{{ site.data.contact.general_inquiries.email }}</a></dd>
+          </div>
+          <div>
+            <dt>{{ site.data.contact.linkedin.label }}</dt>
+            <dd><a href="{{ site.data.contact.linkedin.url }}">LinkedIn</a></dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+  </div>
+  <div class="home-hero__portrait">
+    <figure class="portrait-frame">
+      <img src="{{ '/assets/img/daniel-joseph-aronoff-portrait.jpeg' | relative_url }}" alt="Portrait of Daniel Joseph Aronoff">
+    </figure>
+  </div>
+</section>
+
+<section class="home-secondary">
+  <div class="home-secondary__grid">
+    <div>
+      <p class="section-label">Navigation</p>
+      <ul class="link-list">
+        {% for item in quick_links %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.nav_title | default: item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <p class="section-label">Research areas</p>
+      <ul class="label-grid" aria-label="Research areas">
+        {% for area in page.research_areas %}
+          <li>{{ area }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

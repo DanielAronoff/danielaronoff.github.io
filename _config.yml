@@ -1,0 +1,29 @@
+title: "Daniel Joseph Aronoff: Academic Website"
+description: "Academic website for Daniel Joseph Aronoff, focused on economics, cryptography, digital currencies, and market design."
+url: "https://danielaronoff.github.io"
+baseurl: ""
+lang: "en"
+timezone: "America/New_York"
+markdown: kramdown
+permalink: pretty
+include:
+  - _pages
+sass:
+  sass_dir: _sass
+  style: compressed
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      image: "/assets/img/daniel-joseph-aronoff-portrait.jpeg"
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts
+  - .github
+  - .devcontainer
+  - .vscode
+  - vendor
+  - node_modules

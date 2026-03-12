@@ -1,151 +1,119 @@
-# [The Academic CV That Gets You Hired](https://github.com/HugoBlox/hugo-theme-academic-cv)
+# Daniel Joseph Aronoff: Academic Website
 
-[![Screenshot](.github/preview.webp)](https://hugoblox.com/templates/academic-cv/start/?utm_source=github&utm_medium=readme)
+This repository is a custom Jekyll site for Daniel Joseph Aronoff's academic website. The design is intentionally restrained: editorial typography, a strong grid, monochrome surfaces, thin rules, and a muted accent.
 
-<h1 align="center">The Portfolio That Works While You Sleep</h1>
+## Local setup
 
-<p align="center">
-  <strong>Your unfair advantage in academia.</strong><br/>
-  Stop sending PDFs into the void. Build a living portfolio that boosts citations and lands offers.<br/>
-  Trusted by 250,000+ researchers at <strong>MIT, Stanford, and Google</strong>.
-</p>
+Prerequisites:
 
-<p align="center">
-  <a href="https://hugoblox.com/templates/academic-cv/start?utm_source=github&utm_medium=readme"><b>🚀 Launch Free (60s)</b></a>
-  &nbsp;•&nbsp;
-  <a href="https://hugoblox.com/templates/?open=academic-cv&loading=true&utm_source=github&utm_medium=readme">Live Demo</a>
-  &nbsp;•&nbsp;
-  <a href="https://marketplace.visualstudio.com/items?itemName=ownable.ownable"><b>Visual Editor</b></a>
-</p>
+- Ruby `3.2.3`
+- Bundler
 
-<p align="center">
-  <a href="https://discord.gg/z8wNYzb"><img src="https://img.shields.io/discord/722225264733716590?label=Join%20Discord&style=social" alt="Discord"></a>
-  <a href="https://github.com/HugoBlox/hugo-theme-academic-cv"><img src="https://img.shields.io/github/stars/HugoBlox/hugo-theme-academic-cv?label=Star%20Academic%20CV&style=social" alt="GitHub Stars"></a>
-</p>
-
----
-
-## Why This Template?
-
-Most CVs are static PDFs that get lost in the pile. This is an **intelligent portfolio** that works 24/7 to advance your career.
-
-- **🔮 Future-Proof:** Your content lives in simple **Markdown**. No database to break, no lock-in.
-- **🤖 AI-Ready:** Optimized for search engines and LLMs, so your work is found and cited.
-- **⚡ Zero Maintenance:** Auto-import citations from BibTeX and focus on research.
-- **✍️ Edit Visually:** Use **HugoBlox Studio** in VS Code — no coding needed. Full capabilities in Pro.
-
-<p align="center">
-  <a href="https://hugoblox.com/templates/academic-cv/start?utm_source=github&utm_medium=readme">
-    <img src="https://img.shields.io/badge/⚡️%20Get%20Your%20CV%20in%2060s-ff4655?style=for-the-badge" 
-    alt="Deploy this template" width="400">
-  </a>
-</p>
-
-![HugoBlox Studio in Action](https://raw.githubusercontent.com/HugoBlox/kit/main/.github/media/studio/slide-1.webp)
-*HugoBlox Studio: Drag-and-drop page builder inside VS Code.*
-
-> "My citations went up 3x after switching to this template. The citation auto-sync feature is a lifesaver."
-> — **Dr. Zhang**, AI Research Scientist, Meta
-
----
-
-## Who This Is For
-
-- Students and grads applying to top labs and industry roles
-- Researchers who want a living, citable portfolio
-- Faculty/PIs showcasing publications, talks, and group news
-
----
-
-## Features
-
-| Feature | Benefit |
-| :--- | :--- |
-| **Markdown, Jupyter, RStudio** | Write in the tools you already use. |
-| **Auto-Update Citations** | Drop in a BibTeX file; formatted lists generated automatically. |
-| **Visual Editor** | Drag-and-drop blocks to build pages in minutes. |
-| **Global CDN** | Blazing fast load times (100/100 Lighthouse scores). |
-| **Privacy First** | You own your data. Host for free on GitHub Pages. |
-
----
-
-## Notebook → Posts and Slides
-
-- Publish your actual `.ipynb` as beautiful long-form posts — code, outputs, and narrative kept intact.
-- Slides in Markdown with Reveal.js: math, syntax highlight, diagrams, speaker notes.
-- Coming soon: **Notebook → Slides (beta)**. Request early access in Discord.
-
-Learn more: docs on [Notebooks](https://docs.hugoblox.com/reference/markdown/#-notebooks) and [Slides](https://docs.hugoblox.com/guides/slides/).
-
----
-
-## Why Go Pro (from $8/m)
-
-- Enhanced HugoBlox Studio visual editor — save 10–20 hours setting up and polishing
-- Premium CV & Resumé designs — make an unforgettable first impression
-- Pro blocks, remove attribution, and priority support
-
----
-
-## Free vs Pro
-
-| Feature | Academic CV (Free) | Academic CV Pro & Resumé Pro |
-| --- | --- | --- |
-| Design | Professional & clean | Premium designs |
-| Layouts | Standard sections | Advanced timelines & layouts |
-| Courses/Lectures | Basic | Fully-Featured |
-| First Impression | Strong | Unforgettable |
-| Discord Support | Community | Priority |
-
-<p align="center">
-  <a href="https://hugoblox.com/pricing?utm_source=github&utm_medium=readme"><b>💎 Upgrade to Pro</b></a><br/>
-  <a href="https://hugoblox.com/templates/academic-cv-pro/start?utm_source=github&utm_medium=readme">✨ Deploy Academic CV Pro</a>
-  &nbsp;•&nbsp;
-  <a href="https://hugoblox.com/templates/resume-pro/start?utm_source=github&utm_medium=readme">📄 Deploy Resumé Pro</a>
-</p>
-
----
-
-## Get Started
-
-### Option 1: No-Code (Fastest)
-Launch a fully hosted site in your browser. No software to install.
-
-👉 [**Launch in Browser (Free)**](https://hugoblox.com/templates/academic-cv/start?utm_source=github&utm_medium=readme)
-
-### Option 2: Studio (Visual Editor)
-1) Install [HugoBlox Studio](https://marketplace.visualstudio.com/items?itemName=ownable.ownable) for VS Code  
-2) Open this project and edit visually
-
-### Option 3: CLI (Developers)
-1) Install [Hugo](https://docs.hugoblox.com/start/cli/)
-2) Create your site with the CLI:
+Install dependencies:
 
 ```bash
-npx hugoblox create site --template academic-cv
+RBENV_VERSION=3.2.3 /Users/danielaronoff/.rbenv/shims/bundle install
 ```
 
----
+Run locally:
 
-## FAQ
+```bash
+RBENV_VERSION=3.2.3 /Users/danielaronoff/.rbenv/shims/bundle exec jekyll serve --livereload
+```
 
-- Do I need to know Hugo? No — you can edit visually or write Markdown.
-- Can I host for free? Yes — GitHub Pages/Netlify are supported.
-- Can I export/migrate later? Yes — your site is just files.
-- Can I cancel Pro anytime? Yes.
+Build a production preview:
 
----
+```bash
+RBENV_VERSION=3.2.3 /Users/danielaronoff/.rbenv/shims/bundle exec jekyll build
+```
 
-## Community & Support
+## Where editable content lives
 
-- 💬 [**Discord Community**](https://discord.gg/z8wNYzb)
-- 📚 [**Documentation**](https://docs.hugoblox.com/?utm_source=github&utm_medium=readme)
-- 🐦 [**Follow on X**](https://x.com/MakeOwnable)
-- ⭐ [**Star on GitHub**](https://github.com/HugoBlox/kit)
+- Homepage text: [`_pages/index.md`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_pages/index.md)
+- Books: [`_data/books.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/books.yml)
+- Talks: [`_data/talks.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/talks.yml)
+- Contact details: [`_data/contact.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/contact.yml)
+- CV-linked materials: [`_data/cv_links.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/cv_links.yml)
+- FT letter metadata overrides: [`_data/ft_letters_overrides.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/ft_letters_overrides.yml)
 
----
+## Replacing the portrait
 
-MIT © 2016-Present [George Cushen](https://georgecushen.com)
+Replace [`assets/img/daniel-joseph-aronoff-portrait.jpeg`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/assets/img/daniel-joseph-aronoff-portrait.jpeg) with a new image at the same path, or update the path referenced in:
 
-<!--START_SECTION:news-->
-<!--END_SECTION:news-->
+- [`_config.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_config.yml)
+- [`_layouts/home.html`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_layouts/home.html)
+
+## Replacing or updating the CV
+
+The canonical public CV lives at:
+
+- [`assets/cv/daniel-joseph-aronoff-cv.pdf`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/assets/cv/daniel-joseph-aronoff-cv.pdf)
+
+After replacing it, review:
+
+- [`_pages/cv.md`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_pages/cv.md)
+- [`_data/cv_links.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/cv_links.yml)
+
+## Syncing CV-linked assets
+
+The source of truth for the structured CV links is [`_data/cv_links.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/cv_links.yml).
+
+To import locally stored CV-linked PDFs from the separate asset repo into `assets/cv/linked/`, run:
+
+```bash
+python3 scripts/sync_cv_assets.py
+```
+
+Optional flags:
+
+```bash
+python3 scripts/sync_cv_assets.py --source /path/to/daronoff-cv-assets --dry-run
+```
+
+The script does not delete existing files. It only copies or updates assets referenced by `source_file` entries in [`_data/cv_links.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/cv_links.yml).
+
+## Importing FT letters
+
+Import the Financial Times archive and rebuild the site data file with:
+
+```bash
+python3 scripts/build_ft_index.py
+```
+
+Preview the sizing report without copying files:
+
+```bash
+python3 scripts/build_ft_index.py --report-only
+```
+
+The script:
+
+- scans the local archive
+- reports file count and storage size
+- copies PDFs into `assets/ft-letters/`
+- generates [`_data/ft_letters.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/ft_letters.yml)
+- applies manual corrections from [`_data/ft_letters_overrides.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/ft_letters_overrides.yml)
+- logs unresolved or uncertain entries
+
+## Correcting FT metadata manually
+
+Use [`_data/ft_letters_overrides.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/ft_letters_overrides.yml) for title or date fixes keyed by the date-plus-slug folder name, for example:
+
+```yml
+"2017-03-13__president-trump-has-legitimate-frustrations":
+  title: "President Trump has legitimate frustrations"
+```
+
+After editing overrides, rerun:
+
+```bash
+python3 scripts/build_ft_index.py
+```
+
+## Deploying with GitHub Pages
+
+GitHub Pages deploys through the workflow at:
+
+- [`.github/workflows/pages.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/.github/workflows/pages.yml)
+
+On pushes to `main`, the workflow installs Ruby dependencies, builds the Jekyll site, and deploys the generated `_site` directory to GitHub Pages.

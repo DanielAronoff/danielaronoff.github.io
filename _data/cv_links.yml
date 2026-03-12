@@ -1,0 +1,147 @@
+- category: "Books and chapters"
+  items:
+    - title: "ADESS: A Proof-of-Work Protocol to Deter Double-Spend Attacks"
+      note: "Chapter PDF and Springer chapter record."
+      source_file: "550889_1_En_11_Chapter_Author.pdf"
+      asset_target: "/assets/cv/linked/550889_1_En_11_Chapter_Author.pdf"
+      links:
+        - label: "PDF"
+          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/550889%5F1%5FEn%5F11%5FChapter%5FAuthor.pdf"
+        - label: "DOI"
+          url: "https://doi.org/10.1007/978-3-031-53963-3_11"
+    - title: "A Theory of Accumulation and Secular Stagnation"
+      note: "Book record."
+      links:
+        - label: "DOI"
+          url: "https://doi.org/10.1057/9781137562210"
+    - title: "The Financial Crisis Reconsidered"
+      note: "Book record."
+      links:
+        - label: "DOI"
+          url: "https://doi.org/10.1007/978-1-137-54789-7"
+- category: "Working papers and preprints"
+  items:
+    - title: "Mechanism Design for Hashrate Externalities: Implementing Optimal Security in Proof-of-Work"
+      note: "Unpublished MIT manuscript."
+      source_file: "Aronoff_Mech_Design_Submital(2).pdf"
+      asset_target: "/assets/cv/linked/Aronoff_Mech_Design_Submital(2).pdf"
+      links:
+        - label: "Manuscript"
+          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/Aronoff_Mech_Design_Submital(2).pdf"
+    - title: "SoK: Fully-homomorphic encryption in smart contracts"
+      note: "Cryptology ePrint Archive, Paper 2025/527."
+      links:
+        - label: "ePrint"
+          url: "https://eprint.iacr.org/2025/527"
+    - title: "A Smart-Contract to Resolve Multiple Equilibrium in an Intermediated Repo Trade"
+      links:
+        - label: "arXiv"
+          url: "https://doi.org/10.48550/arXiv.2505.22940"
+    - title: "TradeMech: Multilateral Netting Without Altering Counterparty Risk"
+      links:
+        - label: "arXiv"
+          url: "https://arxiv.org/abs/2512.23842"
+    - title: "RepoMech: A Method to Reduce the Balance-Sheet Impact of Repo Intermediation"
+      links:
+        - label: "arXiv"
+          url: "https://arxiv.org/abs/2405.15089"
+    - title: "Conservation Priorities and Environmental Offsets: Markets for Florida Wetlands"
+      note: "NBER working paper."
+      links:
+        - label: "NBER"
+          url: "https://doi.org/10.3386/w31495"
+    - title: "Double-Spend Counterattacks: Threat of Retaliation in Proof-of-Work Systems"
+      links:
+        - label: "arXiv"
+          url: "https://doi.org/10.48550/arXiv.2002.10736"
+- category: "Industry publications"
+  items:
+    - title: "The Hidden Plumbing of Stablecoins: Financial and Technological Risks in the GENIUS Act Era"
+      note: "MIT Media Lab Digital Currency Initiative research project."
+      links:
+        - label: "Project"
+          url: "https://www.dci.mit.edu/projects/hidden-plumbing-stablecoins"
+    - title: "DeFi for the Securities Industry"
+      note: "Finadium Research Report."
+      links:
+        - label: "Publisher"
+          url: "https://finadium.com"
+    - title: "Bank Stablecoins vs. Central Bank Digital Currencies for Capital Markets"
+      note: "Finadium Research Report."
+      links:
+        - label: "Publisher"
+          url: "https://finadium.com"
+- category: "Recorded talks and video presentations"
+  items:
+    - title: "AI-Driven, Post-Quantum Data Privacy Research Spotlight"
+      links:
+        - label: "Video"
+          url: "https://youtu.be/sTfhVHjRqLA"
+    - title: "Incorporating Cryptographic Methods in Economics"
+      links:
+        - label: "Video"
+          url: "https://youtu.be/eD6tYVDbJEo"
+    - title: "R&D Fintech Innovation"
+      links:
+        - label: "Video"
+          url: "https://youtu.be/9FbN3sQshBk"
+    - title: "Rethinking Currency with Daniel Aronoff"
+      links:
+        - label: "Video"
+          url: "https://youtu.be/wR_amd3xaJ8"
+- category: "Slide presentations"
+  items:
+    - title: "SCBX Cryptography Use Cases: Credit Score Averaging with Differential Privacy and FHE"
+      source_file: "Cryptography_Slidedeck_11_2024.pdf"
+      asset_target: "/assets/cv/linked/Cryptography_Slidedeck_11_2024.pdf"
+      links:
+        - label: "Slides"
+          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/Cryptography_Slidedeck_11_2024.pdf"
+    - title: "ADESS: A Proof-of-Work Protocol to Deter Double-Spend Attacks"
+      note: "Conference slides, FICC 2024 Berlin."
+      source_file: "ADESS_Slidedeck_FICC24_2.7.2024.pdf"
+      asset_target: "/assets/cv/linked/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
+      links:
+        - label: "Slides"
+          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
+    - title: "A Causal Inference Algorithm for Heterogeneous Treatment Effects"
+      note: "Presentation to MIT Econometrics Lunch."
+      source_file: "Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
+      asset_target: "/assets/cv/linked/Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
+      links:
+        - label: "Slides"
+          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
+- category: "Thesis"
+  items:
+    - title: "Essays on Incentive Designs to Improve Market Performance"
+      links:
+        - label: "MIT DSpace"
+          url: "https://dspace.mit.edu/handle/1721.1/147218"
+- category: "Blog posts"
+  items:
+    - title: "Stablecoins and the Limits of Existing Analogies"
+      links:
+        - label: "Post"
+          url: "https://www.dci.mit.edu/posts/stablecoin-analogies"
+    - title: "The GENIUS Act is Now Law. What's Missing?"
+      links:
+        - label: "Post"
+          url: "https://www.dci.mit.edu/posts/stablecoins-genius-act"
+    - title: "1:1 Redemptions for Some, Not All"
+      links:
+        - label: "Post"
+          url: "https://www.dci.mit.edu/posts/stablecoin-redemptions-for-some-not-all"
+    - title: "Will Stablecoins Impact the US Treasury Market?"
+      links:
+        - label: "Post"
+          url: "https://www.dci.mit.edu/posts/stablecoins-treasuries"
+- category: "Project sites"
+  items:
+    - title: "Targeted Nakamoto"
+      links:
+        - label: "Project"
+          url: "https://www.dci.mit.edu/projects/targeted-nakamoto-a-bitcoin-protocol-to-balance-network-security-and-energy-consumption"
+    - title: "ADESS"
+      links:
+        - label: "Project"
+          url: "https://www.dci.mit.edu/projects/adess-a-proof-of-work-blockchain-protocol-modification-to-deter-double-spend-attacks"
