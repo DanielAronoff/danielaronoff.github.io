@@ -1,0 +1,17 @@
+---
+permalink: /sitemap.xml
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% assign public_pages = site.pages | where_exp: "item", "item.url != '/sitemap.xml' and item.url != '/assets/img' and item.output != false and item.url != '/robots.txt' and item.permalink != '/robots.txt'" %}
+  {% assign sorted_pages = public_pages | sort: "url" %}
+  {% for item in sorted_pages %}
+    {% unless item.url contains '/assets/' or item.path contains '_includes/' or item.path contains '_layouts/' or item.path contains '_sass/' %}
+      <url>
+        <loc>{{ item.url | absolute_url }}</loc>
+        <lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod>
+      </url>
+    {% endunless %}
+  {% endfor %}
+</urlset>
