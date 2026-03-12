@@ -2,6 +2,10 @@
   publisher: Springer
   year: 2016
   cover_image: "/assets/img/books/financial-crisis-reconsidered.jpg"
+  cover_image_1x: "/assets/img/books/financial-crisis-reconsidered-315x500.jpg"
+  cover_image_2x: "/assets/img/books/financial-crisis-reconsidered-630x1000.jpg"
+  cover_image_webp_1x: "/assets/img/books/financial-crisis-reconsidered-315x500.webp"
+  cover_image_webp_2x: "/assets/img/books/financial-crisis-reconsidered-630x1000.webp"
   links:
     - label: Springer
       url: https://link.springer.com/book/10.1007/978-1-137-54789-7
@@ -15,6 +19,10 @@
   publisher: Springer
   year: 2016
   cover_image: "/assets/img/books/theory-of-accumulation.jpg"
+  cover_image_1x: "/assets/img/books/theory-of-accumulation-309x500.jpg"
+  cover_image_2x: "/assets/img/books/theory-of-accumulation-618x1000.jpg"
+  cover_image_webp_1x: "/assets/img/books/theory-of-accumulation-309x500.webp"
+  cover_image_webp_2x: "/assets/img/books/theory-of-accumulation-618x1000.webp"
   links:
     - label: Springer
       url: https://link.springer.com/book/10.1057/9781137562210
