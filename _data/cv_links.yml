@@ -105,7 +105,7 @@
         - label: "Slides"
           url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
     - title: "A Causal Inference Algorithm for Heterogeneous Treatment Effects"
-      note: "Presentation to MIT Econometrics Lunch."
+      note: "October 14, 2021 · Presentation to MIT Econometrics Lunch."
       source_file: "Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
       asset_target: "/assets/cv/linked/Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
       links:

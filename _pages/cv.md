@@ -9,8 +9,7 @@ description: Download Daniel Joseph Aronoff's CV and browse linked papers, talks
 lede: Download the current CV and browse the linked materials surfaced from it in structured form.
 ---
 <div class="page-stack">
-  <section class="cv-panel">
-    <p>The canonical public CV is hosted locally in this repository and can be downloaded directly.</p>
+<section class="cv-panel">
     <div class="cv-actions">
       <a class="button-link" href="{{ '/assets/cv/daniel-joseph-aronoff-cv.pdf' | relative_url }}">Download CV</a>
     </div>

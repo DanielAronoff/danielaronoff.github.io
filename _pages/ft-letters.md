@@ -5,13 +5,16 @@ nav: true
 nav_title: FT Letters
 nav_order: 5
 permalink: /ft-letters/
-description: Financial Times letters archive with downloadable PDFs, year groupings, and search.
-lede: A public, searchable Financial Times letters archive grouped by year and linked to downloadable hosted PDFs.
+description: My letters to the Financial Times, indexed, searchable, and available as downloadable PDFs.
+lede: A public, searchable index of my letters to the Financial Times, grouped by year and linked to downloadable hosted PDFs.
 ---
 {% assign total_letters = site.data.ft_letters | size %}
 {% assign year_groups = site.data.ft_letters | group_by: "year" | sort: "name" | reverse %}
 
 <div class="page-stack">
+  {% if total_letters == 0 %}
+    <p class="meta-line">No letters are currently indexed. Rebuild the FT index if source files have been added.</p>
+  {% else %}
   <section class="search-panel">
     <label for="ft-search">Search letters by title, date, or source filename</label>
     <input id="ft-search" type="search" placeholder="Search the archive" data-ft-search-input>
@@ -48,4 +51,5 @@ lede: A public, searchable Financial Times letters archive grouped by year and l
       </section>
     {% endfor %}
   </section>
+  {% endif %}
 </div>
