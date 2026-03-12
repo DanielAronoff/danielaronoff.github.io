@@ -1,7 +1,7 @@
 title: "Daniel Joseph Aronoff: Academic Website"
 description: "Academic website for Daniel Joseph Aronoff, focused on economics, cryptography, digital currencies, and market design."
 url: "https://danielaronoff.github.io"
-baseurl: "/danielaronoff"
+baseurl: ""
 lang: "en"
 timezone: "America/New_York"
 markdown: kramdown
