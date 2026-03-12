@@ -32,7 +32,7 @@ lede: Selected recorded talks, with related slide decks surfaced from the CV whe
       {% for item in sorted_slides %}
         <li class="talk-item">
           {% if item.note %}
-            <p class="meta-line">{{ item.note }}</p>
+            <div class="meta-line">{{ item.note }}</div>
           {% endif %}
           <h2>{{ item.title }}</h2>
           <div class="talk-actions">
