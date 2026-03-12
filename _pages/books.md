@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Books
+title: Books and Chapters
 nav: true
-nav_title: Books
+nav_title: Books and Chapters
 nav_order: 3
 permalink: /books/
-description: Books by Daniel Joseph Aronoff.
-lede: Two books on secular stagnation, accumulation, and the financial crisis, presented in a typographic, text-forward format.
+description: Books and chapters by Daniel Joseph Aronoff.
+lede: Books and chapters on market design, accumulation, and digital currencies, presented in a typographic, text-forward format.
 ---
 <section class="book-list">
   {% for book in site.data.books %}

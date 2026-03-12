@@ -24,3 +24,32 @@
     Thomas Malthus identified a crucial tension at the heart of a market economy: While an accumulation of wealth is necessary to provide the capital investment needed to generate growth, too much accumulation will cause planned saving to exceed profitable investment, which will result in secular stagnation, a condition of low growth and underemployment of resources. Keynes drew inspiration from Malthus in his attempt to comprehend the causes of the Great Depression of the 1930s. Now, Aronoff demonstrates how a related but slightly different aspect of Malthus' thought can illuminate one of the most pressing issues of our times.
 
     In A Theory of Accumulation and Secular Stagnation, Aronoff explores Malthus' ideas relating to secular stagnation and uses the insight gained to understand the origins of the subpar growth and tepid employment, periodically punctuated by booms, that has plagued the US economy since the turn of the millennium. He explains how the rise of mercantilism among Asian countries principally China and increased income concentration generated an upsurge in excess saving. This accumulation created a chronic deficiency in demand while also depressing interest rates, which generated a search for yield that fuelled periodic booms.
+
+- title: "ADESS: A Proof-of-Work Protocol to Deter Double-Spend Attacks"
+  type: Chapter
+  publisher: Springer
+  year: 2024
+  cover_image: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover.png"
+  links:
+    - label: Springer
+      url: https://link.springer.com/chapter/10.1007/978-3-031-53963-3_11
+    - label: DOI
+      url: https://doi.org/10.1007/978-3-031-53963-3_11
+    - label: PDF
+      url: /assets/cv/linked/550889_1_En_11_Chapter_Author.pdf
+  jacket_text: |
+    Abstract. A principal vulnerability of a proof-of-work (“PoW”)
+    blockchain is that an attacker can re-write the history of transactions by
+    forking a previously published block and building a new chain segment containing
+    a different sequence of transactions. If the attacker’s chain has the most
+    cumulative mining puzzle difficulty, nodes will recognize it as canonical.
+
+    We propose a modification to PoW protocols, called ADESS, that contains two novel
+    features. The first modification enables a node to identify the attacker chain by
+    comparing the temporal sequence of blocks on competing chains. The second
+    modification penalizes the attacker by requiring it to apply exponentially increasing
+    hashrate in order to make its chain canonical. We demonstrate two things: (i) the
+    expected cost of carrying out a double-spend attack is weakly higher under ADESS
+    compared to the current PoW protocols and (ii) for any value of transaction, there
+    is a penalty setting in ADESS that renders the expected profit of a double-spend
+    attack negative.
