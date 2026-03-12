@@ -234,8 +234,9 @@
 .book-lightbox__frame {
   position: relative;
   z-index: 1;
-  max-width: min(90vw, 42rem);
-  width: min(90vw, 42rem);
+  max-width: min(86vw, 34rem);
+  width: min(86vw, 34rem);
+  max-height: min(84vh, 32rem);
 }
 
 .book-lightbox__image {
