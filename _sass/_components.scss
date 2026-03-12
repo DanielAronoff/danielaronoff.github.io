@@ -155,16 +155,14 @@
 
 .cv-link-item,
 .talk-item,
-.letter-item,
-.book-entry {
+.letter-item {
   padding-top: var(--space-3);
   border-top: var(--rule);
 }
 
 .cv-link-item:first-child,
 .talk-item:first-child,
-.letter-item:first-child,
-.book-entry:first-child {
+.letter-item:first-child {
   padding-top: 0;
   border-top: 0;
 }
@@ -178,7 +176,62 @@
 
 .book-entry {
   display: grid;
+  gap: var(--space-4);
+  align-items: start;
+  border-top: var(--rule);
+  padding-top: var(--space-4);
+}
+
+.book-entry:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.book-cover-wrap {
+  margin: 0;
+  border: var(--rule);
+  padding: var(--space-2);
+  background: #f8f6f0;
+  max-width: 14rem;
+}
+
+.book-cover {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border: 1px solid rgba(20, 20, 20, 0.16);
+}
+
+.book-cover-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(163, 65, 42, 0.18),
+      rgba(163, 65, 42, 0.18) 2px,
+      transparent 2px,
+      transparent 10px
+    ),
+    linear-gradient(180deg, #f4f1ea, #f8f6f0);
+  border: 1px solid rgba(20, 20, 20, 0.16);
+}
+
+.book-content {
+  display: grid;
   gap: var(--space-2);
+}
+
+@media (min-width: 52rem) {
+  .book-entry {
+    grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .book-cover-wrap {
+    position: sticky;
+    top: var(--space-5);
+  }
 }
 
 .book-body {
