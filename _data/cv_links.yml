@@ -94,7 +94,9 @@
     - title: "SCBX Cryptography Use Cases: Credit Score Averaging with Differential Privacy and FHE"
       date: "2024-11-19"
       date_key: 20241119
-      note: "November 19, 2024 · SCBX slide deck."
+      date_label: "Nov. 2024"
+      note: "Presentation to SCBX R&D Department."
+      event: "SCBX slide deck"
       source_file: "Cryptography_Slidedeck_11_2024.pdf"
       asset_target: "/assets/cv/linked/Cryptography_Slidedeck_11_2024.pdf"
       links:
@@ -103,16 +105,22 @@
     - title: "ADESS: A Proof-of-Work Protocol to Deter Double-Spend Attacks"
       date: "2024-02-07"
       date_key: 20240207
-      note: "Conference slides, FICC 2024 Berlin."
+      date_label: "Feb. 2024"
+      note: "Conference slides."
+      event: "FICC 2024 Berlin"
       source_file: "ADESS_Slidedeck_FICC24_2.7.2024.pdf"
       asset_target: "/assets/cv/linked/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
       links:
         - label: "Slides"
           url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
+        - label: "Video"
+          url: "https://www.dci.mit.edu/projects/adess-a-proof-of-work-blockchain-protocol-modification-to-deter-double-spend-attacks"
     - title: "A Causal Inference Algorithm for Heterogeneous Treatment Effects"
       date: "2021-10-14"
       date_key: 20211014
-      note: "October 14, 2021 · Presentation to MIT Econometrics Lunch."
+      date_label: "Oct. 2021"
+      note: "Presentation to MIT Econometrics Lunch."
+      event: "MIT Econometrics Lunch"
       source_file: "Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
       asset_target: "/assets/cv/linked/Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
       links:

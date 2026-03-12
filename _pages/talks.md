@@ -10,35 +10,45 @@ lede: Selected recorded talks, with related slide decks surfaced from the CV whe
 ---
 <div class="page-stack">
   <section>
-    <ul class="talk-list">
-      {% assign sorted_talks = site.data.talks | sort: "date_key" | reverse %}
-      {% for talk in sorted_talks %}
-        <li class="talk-item">
-          <div class="meta-line">{{ talk.date_label }} · {{ talk.event }}</div>
-          <h2>{{ talk.title }}</h2>
-          <div class="talk-actions">
-            <a class="button-link" href="{{ talk.video_url }}">Watch video</a>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
-  </section>
-
-  <section>
-    <p class="section-label">Selected slide decks</p>
+    {% assign talk_items = site.data.talks %}
     {% assign slide_group = site.data.cv_links | where: "category", "Slide presentations" | first %}
-    {% assign sorted_slides = slide_group.items | sort: "date_key" | reverse %}
+    {% assign slide_items = slide_group.items %}
+    {% assign timeline = talk_items | concat: slide_items %}
+    {% assign timeline_sorted = timeline | sort: "date_key" | reverse %}
     <ul class="talk-list">
-      {% for item in sorted_slides %}
+      {% for item in timeline_sorted %}
         <li class="talk-item">
-          {% if item.note %}
-            <div class="meta-line">{{ item.note }}</div>
-          {% endif %}
+          <div class="meta-line">
+            {% if item.date_label %}
+              {{ item.date_label }}
+            {% elsif item.date %}
+              {{ item.date }}
+            {% else %}
+              {{ item.date_key }}
+            {% endif %}
+            {% if item.event %}
+              · {{ item.event }}
+            {% elsif item.note %}
+              · {{ item.note }}
+            {% endif %}
+          </div>
           <h2>{{ item.title }}</h2>
           <div class="talk-actions">
-            {% for link in item.links %}
-              <a class="button-link" href="{{ link.url }}">{{ link.label }}</a>
-            {% endfor %}
+            {% if item.video_url %}
+              <a class="button-link button-link--video" href="{{ item.video_url }}">Watch video</a>
+            {% endif %}
+            {% if item.links %}
+              {% for link in item.links %}
+                {% assign link_label = link.label | downcase %}
+                {% if link_label contains "video" %}
+                  <a class="button-link button-link--video" href="{{ link.url }}">{{ link.label }}</a>
+                {% elsif link_label contains "slide" %}
+                  <a class="button-link button-link--slides" href="{{ link.url }}">{{ link.label }}</a>
+                {% else %}
+                  <a class="button-link" href="{{ link.url }}">{{ link.label }}</a>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
           </div>
         </li>
       {% endfor %}
