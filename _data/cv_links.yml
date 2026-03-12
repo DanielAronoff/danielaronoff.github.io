@@ -92,6 +92,7 @@
 - category: "Slide presentations"
   items:
     - title: "SCBX Cryptography Use Cases: Credit Score Averaging with Differential Privacy and FHE"
+      note: "November 19, 2024 · SCBX slide deck."
       source_file: "Cryptography_Slidedeck_11_2024.pdf"
       asset_target: "/assets/cv/linked/Cryptography_Slidedeck_11_2024.pdf"
       links:

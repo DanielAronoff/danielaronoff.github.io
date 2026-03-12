@@ -29,10 +29,10 @@ lede: Selected recorded talks, with related slide decks surfaced from the CV whe
     <ul class="talk-list">
       {% for item in slide_group.items %}
         <li class="talk-item">
-          <h2>{{ item.title }}</h2>
           {% if item.note %}
             <p class="meta-line">{{ item.note }}</p>
           {% endif %}
+          <h2>{{ item.title }}</h2>
           <div class="talk-actions">
             {% for link in item.links %}
               <a class="button-link" href="{{ link.url }}">{{ link.label }}</a>
