@@ -192,7 +192,7 @@
   border: var(--rule);
   padding: 0.7rem;
   background: #f6f2e9;
-  max-width: 10.75rem;
+  max-width: 12.75rem;
   width: 100%;
 }
 
@@ -234,8 +234,8 @@
 .book-lightbox__frame {
   position: relative;
   z-index: 1;
-  max-width: min(80vw, 36rem);
-  width: min(80vw, 36rem);
+  max-width: min(90vw, 42rem);
+  width: min(90vw, 42rem);
 }
 
 .book-lightbox__image {
@@ -281,7 +281,7 @@
 
 @media (min-width: 52rem) {
   .book-entry {
-    grid-template-columns: minmax(0, 1fr) minmax(10rem, 11.5rem);
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, 14rem);
     gap: var(--space-5);
     align-items: start;
   }
