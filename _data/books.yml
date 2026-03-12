@@ -32,6 +32,8 @@
   cover_image_1x: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover-700x1120.jpg"
   cover_image_2x: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover-1400x2240.jpg"
   cover_image: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover-700x1120.jpg"
+  cover_image_webp_1x: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover-700x1120.webp"
+  cover_image_webp_2x: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover-1400x2240.webp"
   links:
     - label: Springer
       url: https://link.springer.com/chapter/10.1007/978-3-031-53963-3_11
