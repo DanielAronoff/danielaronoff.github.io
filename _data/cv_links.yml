@@ -92,6 +92,7 @@
 - category: "Slide presentations"
   items:
     - title: "SCBX Cryptography Use Cases: Credit Score Averaging with Differential Privacy and FHE"
+      date: "2024-11-19"
       note: "November 19, 2024 · SCBX slide deck."
       source_file: "Cryptography_Slidedeck_11_2024.pdf"
       asset_target: "/assets/cv/linked/Cryptography_Slidedeck_11_2024.pdf"
@@ -99,6 +100,7 @@
         - label: "Slides"
           url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/Cryptography_Slidedeck_11_2024.pdf"
     - title: "ADESS: A Proof-of-Work Protocol to Deter Double-Spend Attacks"
+      date: "2024-02-07"
       note: "Conference slides, FICC 2024 Berlin."
       source_file: "ADESS_Slidedeck_FICC24_2.7.2024.pdf"
       asset_target: "/assets/cv/linked/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
@@ -106,6 +108,7 @@
         - label: "Slides"
           url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
     - title: "A Causal Inference Algorithm for Heterogeneous Treatment Effects"
+      date: "2021-10-14"
       note: "October 14, 2021 · Presentation to MIT Econometrics Lunch."
       source_file: "Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
       asset_target: "/assets/cv/linked/Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"

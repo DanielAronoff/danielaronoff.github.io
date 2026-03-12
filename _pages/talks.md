@@ -11,7 +11,8 @@ lede: Selected recorded talks, with related slide decks surfaced from the CV whe
 <div class="page-stack">
   <section>
     <ul class="talk-list">
-      {% for talk in site.data.talks %}
+      {% assign sorted_talks = site.data.talks | sort: "date" | reverse %}
+      {% for talk in sorted_talks %}
         <li class="talk-item">
           <div class="meta-line">{{ talk.date_label }} · {{ talk.event }}</div>
           <h2>{{ talk.title }}</h2>
@@ -26,8 +27,9 @@ lede: Selected recorded talks, with related slide decks surfaced from the CV whe
   <section>
     <p class="section-label">Selected slide decks</p>
     {% assign slide_group = site.data.cv_links | where: "category", "Slide presentations" | first %}
+    {% assign sorted_slides = slide_group.items | sort: "date" | reverse %}
     <ul class="talk-list">
-      {% for item in slide_group.items %}
+      {% for item in sorted_slides %}
         <li class="talk-item">
           {% if item.note %}
             <p class="meta-line">{{ item.note }}</p>
