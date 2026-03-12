@@ -29,7 +29,9 @@
   type: Chapter
   publisher: Springer
   year: 2024
-  cover_image: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover.jpg"
+  cover_image_1x: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover-700x1120.jpg"
+  cover_image_2x: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover-1400x2240.jpg"
+  cover_image: "/assets/img/books/adess-proof-of-work-protocol-chapter-cover-700x1120.jpg"
   links:
     - label: Springer
       url: https://link.springer.com/chapter/10.1007/978-3-031-53963-3_11

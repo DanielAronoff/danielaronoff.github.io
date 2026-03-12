@@ -36,7 +36,20 @@ lede: Books and chapters on market design, accumulation, and digital currencies,
             rel="noopener"
             data-book-cover
           >
-            <img class="book-cover" src="{{ book.cover_image | relative_url }}" alt="Cover of {{ book.title }}">
+            {% if book.cover_image_1x and book.cover_image_2x %}
+              <img
+                class="book-cover"
+                src="{{ book.cover_image_1x | relative_url }}"
+                srcset="{{ book.cover_image_1x | relative_url }} 1x, {{ book.cover_image_2x | relative_url }} 2x"
+                alt="Cover of {{ book.title }}"
+              >
+            {% else %}
+              <img
+                class="book-cover"
+                src="{{ book.cover_image | relative_url }}"
+                alt="Cover of {{ book.title }}"
+              >
+            {% endif %}
           </a>
         {% else %}
           <div class="book-cover-placeholder" role="img" aria-label="Cover image placeholder for {{ book.title }}"></div>
