@@ -66,7 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let visibleCount = 0;
 
     items.forEach((item) => {
-      const haystack = item.dataset.searchIndex || "";
+      const haystack = [
+        item.dataset.title || "",
+        item.dataset.date || "",
+        item.dataset.source || "",
+        item.dataset.slug || "",
+      ]
+        .join(" ")
+        .toLowerCase();
       const matches = !query || haystack.includes(query);
       item.hidden = !matches;
       if (matches) {

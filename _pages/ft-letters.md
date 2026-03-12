@@ -34,10 +34,13 @@ lede: A public, searchable index of my letters to the Financial Times, grouped b
         <h2>{{ group.name }}</h2>
         <ul class="year-list">
           {% for letter in group.items %}
-            <li
+          <li
               class="letter-item"
               data-ft-search-item
-              data-search-index="{{ letter.title | downcase | xml_escape }} {{ letter.date | downcase | xml_escape }} {{ letter.source_filename | downcase | xml_escape }} {{ letter.slug | downcase | xml_escape }}"
+              data-title="{{ letter.title | xml_escape }}"
+              data-date="{{ letter.date | xml_escape }}"
+              data-source="{{ letter.source_filename | xml_escape }}"
+              data-slug="{{ letter.slug | xml_escape }}"
             >
               <div class="letter-meta">{{ letter.date | date: "%B %-d, %Y" }}</div>
               <h3><a href="{{ letter.pdf | relative_url }}">{{ letter.title }}</a></h3>
