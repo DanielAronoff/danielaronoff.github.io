@@ -213,7 +213,13 @@
 
 .recent-update-link {
   display: block;
+  cursor: pointer;
   text-underline-offset: 0.18em;
+}
+
+.recent-update-link:hover,
+.recent-update-link:focus-visible {
+  text-decoration: underline;
 }
 
 .recent-update-title {
