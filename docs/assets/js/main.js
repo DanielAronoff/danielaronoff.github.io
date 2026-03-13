@@ -1,4 +1,84 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const clampUpdateList = () => {
+    const list = document.querySelector("[data-recent-updates-list]");
+    if (!list) {
+      return;
+    }
+
+    const updateItems = Array.from(list.querySelectorAll("[data-update-date][data-update-url]"));
+    const emptyState = document.querySelector("[data-recent-updates-empty]");
+    const now = new Date();
+    const cutoff = new Date(now);
+    const fragment = document.createDocumentFragment();
+
+    cutoff.setMonth(cutoff.getMonth() - 12);
+
+    const toIsoDate = (value) => {
+      if (!value) {
+        return "";
+      }
+
+      const date = new Date(`${value}T00:00:00Z`);
+      if (Number.isNaN(date.getTime())) {
+        return "";
+      }
+      return date.toISOString().slice(0, 10);
+    };
+
+    const sorted = updateItems
+      .map((item) => {
+        const value = item.dataset.updateDate;
+        const parsed = new Date(`${value}T00:00:00Z`);
+        if (Number.isNaN(parsed.getTime())) {
+          return null;
+        }
+        return {
+          item,
+          parsed,
+          iso: toIsoDate(value),
+          url: item.dataset.updateUrl || "",
+        };
+      })
+      .filter((entry) => {
+        if (!entry || !entry.iso) {
+          return false;
+        }
+
+        return entry.parsed >= cutoff && entry.parsed <= now;
+      })
+      .sort((left, right) => right.parsed.getTime() - left.parsed.getTime());
+
+    const deduped = [];
+    const seenUrls = new Set();
+
+    sorted.forEach((entry) => {
+      if (entry.url && seenUrls.has(entry.url)) {
+        return;
+      }
+      if (entry.url) {
+        seenUrls.add(entry.url);
+      }
+      deduped.push(entry);
+    });
+
+    list.textContent = "";
+    deduped.forEach((entry, index) => {
+      const node = entry.item;
+      if (index === 0) {
+        node.classList.add("is-first");
+      } else {
+        node.classList.remove("is-first");
+      }
+      node.querySelector("time")?.setAttribute("datetime", entry.iso);
+      fragment.appendChild(node);
+    });
+    list.appendChild(fragment);
+
+    if (emptyState) {
+      emptyState.hidden = deduped.length > 0;
+    }
+  };
+
   const coverLinks = document.querySelectorAll("[data-book-cover]");
   const lightbox = document.querySelector("[data-book-lightbox]");
   const lightboxImage = lightbox ? lightbox.querySelector(".book-lightbox__image") : null;
@@ -49,6 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  clampUpdateList();
 
   const searchInput = document.querySelector("[data-ft-search-input]");
 

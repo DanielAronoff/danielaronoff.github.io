@@ -44,10 +44,17 @@
 .footer-list,
 .cv-link-grid,
 .talk-list,
-.year-list {
+.year-list,
+.recent-updates-list {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.recent-updates-list {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: 0;
 }
 
 .action-list {
@@ -185,6 +192,27 @@
 .letter-item:first-child {
   padding-top: 0;
   border-top: 0;
+}
+
+.recent-update-item {
+  padding-top: var(--space-3);
+  border-top: var(--rule);
+}
+
+.recent-update-item.is-first {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.recent-update-time {
+  display: inline-block;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  margin-bottom: 0.45rem;
+}
+
+.recent-update-link {
+  text-underline-offset: 0.18em;
 }
 
 .meta-line,
