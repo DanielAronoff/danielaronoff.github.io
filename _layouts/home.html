@@ -10,7 +10,7 @@ layout: default
       {{ content }}
     </div>
     <div class="hero-meta">
-      <section class="meta-block">
+      <section class="meta-block" id="quick-links">
         <h2>Quick links</h2>
         <ul class="action-list">
           {% assign quick_links = site.pages | where_exp: "item", "item.nav == true and item.url != '/'" | sort: "nav_order" %}
