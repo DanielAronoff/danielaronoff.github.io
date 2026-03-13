@@ -29,22 +29,36 @@
         - label: "Manuscript"
           url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/Aronoff_Mech_Design_Submital(2).pdf"
     - title: "SoK: Fully-homomorphic encryption in smart contracts"
+      date: "2026-03-06"
+      date_key: 20260306
+      date_label: "Mar. 2026"
       note: "Cryptology ePrint Archive, Paper 2025/527."
       links:
         - label: "ePrint"
           url: "https://eprint.iacr.org/2025/527"
-    - title: "A Smart-Contract to Resolve Multiple Equilibrium in an Intermediated Repo Trade"
+        - label: "IFCA DeFi'26 version"
+          url: "https://ifca.ai/fc26/defi/papers/sok-fhe-smart-contracts.pdf"
+    - title: "A Smart-Contract to Resolve Multiple Equilibrium in an Intermediated Trade"
+      date: "2025-05-01"
+      date_key: 20250501
+      date_label: "May 2025"
       links:
         - label: "arXiv"
-          url: "https://doi.org/10.48550/arXiv.2505.22940"
+          url: "https://arxiv.org/abs/2505.22940"
     - title: "TradeMech: Multilateral Netting Without Altering Counterparty Risk"
+      date: "2025-12-01"
+      date_key: 20251201
+      date_label: "Dec. 2025"
       links:
         - label: "arXiv"
           url: "https://arxiv.org/abs/2512.23842"
     - title: "RepoMech: A Method to Reduce the Balance-Sheet Impact of Repo Intermediation"
+      date: "2025-12-01"
+      date_key: 20251201
+      date_label: "Dec. 2025"
       links:
         - label: "arXiv"
-          url: "https://arxiv.org/abs/2405.15089"
+          url: "https://arxiv.org/html/2512.23842v1"
     - title: "Conservation Priorities and Environmental Offsets: Markets for Florida Wetlands"
       note: "NBER working paper."
       links:
@@ -57,10 +71,13 @@
 - category: "Industry publications"
   items:
     - title: "The Hidden Plumbing of Stablecoins: Financial and Technological Risks in the GENIUS Act Era"
+      date: "2026-03-06"
+      date_key: 20260306
+      date_label: "Mar. 2026"
       note: "MIT Media Lab Digital Currency Initiative research project."
       links:
         - label: "Project"
-          url: "https://www.dci.mit.edu/projects/hidden-plumbing-stablecoins"
+          url: "https://www.dci.mit.edu/posts/mit-dci-releases-the-hidden-plumbing-of-stablecoins-financial-and-technological-risks-in-the-genius-act-era"
     - title: "DeFi for the Securities Industry"
       note: "Finadium Research Report."
       links:

@@ -4,6 +4,12 @@
   date_label: "Oct. 2025"
   event: "MIT-ILP conference, Securing the Future: AI-Driven Post-Quantum Data Privacy"
   video_url: https://www.youtube.com/watch?v=sTfhVHjRqLA
+- title: "SoK: Fully-Homomorphic Encryption in Smart Contracts"
+  date: "2026-03-06"
+  date_key: 20260306
+  date_label: "Mar. 2026"
+  event: "IFCA DeFi'26"
+  video_url: "https://ifca.ai/fc26/defi/program.html"
 - title: "Incorporating Cryptographic Methods in Economics"
   date: "2024-06-01"
   date_key: 20240601

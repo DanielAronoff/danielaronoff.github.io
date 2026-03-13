@@ -17,6 +17,24 @@ document.addEventListener("DOMContentLoaded", () => {
     return Number.isFinite(maxItems) && maxItems > 0 ? maxItems : null;
   };
 
+  const subtractMonthsUTC = (value, months) => {
+    if (!Number.isFinite(months) || months < 0) {
+      return new Date(value.getTime());
+    }
+
+    const year = value.getUTCFullYear();
+    const monthIndex = value.getUTCMonth();
+    const day = value.getUTCDate();
+    const target = new Date(Date.UTC(year, monthIndex - months, day));
+
+    const maxDay = new Date(Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0)).getUTCDate();
+    if (day > maxDay) {
+      target.setUTCDate(maxDay);
+    }
+
+    return target;
+  };
+
   const getEmptyState = (list) => {
     const scope = list.closest("section") || list.parentElement;
     return scope ? scope.querySelector("[data-recent-updates-empty]") : null;
@@ -98,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const url = decodeURIComponent(String(value));
 
-    const arxivMatch = url.match(/arxiv(?:\.org\/abs\/|[.:])(\d{2})(\d{2})\.\d+/i);
+    const arxivMatch = url.match(/arxiv(?:\.org\/(?:abs|html)\/|[.:])(\d{2})(\d{2})\.\d+/i);
     if (arxivMatch && arxivMatch[1] && arxivMatch[2]) {
       const year = Number.parseInt(`20${arxivMatch[1]}`, 10);
       const month = Number.parseInt(arxivMatch[2], 10);
@@ -107,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const eprintMatch = url.match(/eprint\.iacr\.org\/(\d{4})\/\d+/i);
     if (eprintMatch && eprintMatch[1]) {
-      return new Date(Date.UTC(Number(eprintMatch[1]), 0, 1));
+      return new Date(Date.UTC(Number(eprintMatch[1]), 11, 31));
     }
 
     const dateMatch = url.match(/([0-9]{1,2})[.\-_](\d{1,2})[.\-_](20\d{2})/);
@@ -178,17 +196,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const updateItems = Array.from(list.querySelectorAll("[data-update-date][data-update-url]"));
+    const updateItems = Array.from(list.querySelectorAll("[data-update-url]"));
     const emptyState = getEmptyState(list);
     const now = new Date();
+    const nowUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
     const fragment = document.createDocumentFragment();
     const windowMonths = parseWindowMonths(list);
     const maxItems = parseMaxItems(list);
     const hasWindow = Number.isFinite(windowMonths) && windowMonths > 0;
-    const cutoff = new Date(now);
-    if (hasWindow) {
-      cutoff.setMonth(cutoff.getMonth() - windowMonths);
-    }
+    const cutoff = subtractMonthsUTC(nowUtc, hasWindow ? windowMonths : 0);
 
     const sorted = updateItems
       .map((item) => {
@@ -210,29 +226,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (!hasWindow) {
-          return entry.parsed <= now;
+          return entry.parsed <= nowUtc;
         }
 
-        return entry.parsed >= cutoff && entry.parsed <= now;
+        return entry.parsed >= cutoff && entry.parsed <= nowUtc;
       })
       .sort((left, right) => right.parsed.getTime() - left.parsed.getTime());
 
-    const deduped = [];
-    const seenUrls = new Set();
-
-    sorted.forEach((entry) => {
-      if (entry.url && seenUrls.has(entry.url)) {
-        return;
-      }
-      if (entry.url) {
-        seenUrls.add(entry.url);
-      }
-      deduped.push(entry);
-    });
-
     list.textContent = "";
 
-    const finalItems = maxItems ? deduped.slice(0, maxItems) : deduped;
+    const finalItems = maxItems ? sorted.slice(0, maxItems) : sorted;
 
     finalItems.forEach((entry, index) => {
       const node = entry.item;

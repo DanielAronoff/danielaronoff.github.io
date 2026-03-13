@@ -1,12 +1,5 @@
-{% assign window_months = include.window_months | default: 12 | plus: 0 %}
-{% assign now_ts = site.time | date: "%s" | plus: 0 %}
-{% assign seconds_per_month = 2628000 %}
-{% assign cutoff_seconds = window_months | times: seconds_per_month %}
-{% assign cutoff_ts = now_ts | minus: cutoff_seconds %}
-
 {% for manual_item in site.data.recent_updates %}
-  {% assign manual_ts = manual_item.date | date: "%s" | plus: 0 %}
-  {% if manual_item.date and manual_item.url and manual_ts >= cutoff_ts and manual_ts <= now_ts %}
+  {% if manual_item.date and manual_item.url %}
     <li class="recent-update-item" data-update-source="manual" data-update-type="announcement" data-update-date="{{ manual_item.date }}" data-update-url="{{ manual_item.url }}">
       <time datetime="{{ manual_item.date }}" class="recent-update-time">
         {{ manual_item.date | date: "%B %-d, %Y" }}
@@ -19,8 +12,7 @@
 {% endfor %}
 
 {% for talk in site.data.talks %}
-  {% assign talk_ts = talk.date | date: "%s" | plus: 0 %}
-  {% if talk.date and talk_ts >= cutoff_ts and talk_ts <= now_ts %}
+  {% if talk.video_url or talk.links %}
     {% if talk.video_url %}
       {% assign talk_url = talk.video_url %}
     {% elsif talk.links %}
@@ -29,11 +21,19 @@
       {% assign talk_url = nil %}
     {% endif %}
 
-      {% if talk_url %}
-        <li class="recent-update-item" data-update-source="talks" data-update-type="talk" data-update-date="{{ talk.date }}" data-update-url="{{ talk_url }}">
-          <time datetime="{{ talk.date }}" class="recent-update-time">
-            {{ talk.date | date: "%B %-d, %Y" }}
+    {% if talk_url %}
+      <li class="recent-update-item" data-update-source="talks" data-update-type="talk" data-update-date="{{ talk.date }}" data-update-date-key="{{ talk.date_key }}" data-update-date-label="{{ talk.date_label }}" data-update-url="{{ talk_url }}">
+        {% if talk.date or talk.date_key or talk.date_label %}
+          <time {% if talk.date %}datetime="{{ talk.date }}"{% endif %} class="recent-update-time">
+            {% if talk.date %}
+              {{ talk.date | date: "%B %-d, %Y" }}
+            {% elsif talk.date_label %}
+              {{ talk.date_label }}
+            {% else %}
+              {{ talk.date_key }}
+            {% endif %}
           </time>
+        {% endif %}
         <a class="recent-update-link" href="{{ talk_url }}">
           {{ talk.title }}{% if talk.event %} · {{ talk.event }}{% endif %}
         </a>
@@ -67,11 +67,11 @@
         {% assign cv_update_url = cv_item.links.first.url %}
       {% endif %}
 
-      {% if cv_update_url %}
-        <li class="recent-update-item" data-update-source="cv_links" data-update-type="cv" data-update-date="{{ cv_update_date }}" data-update-date-key="{{ cv_item.date_key }}" data-update-date-label="{{ cv_item.date_label }}" data-update-url="{{ cv_update_url }}">
-          <time datetime="{{ cv_update_date }}" class="recent-update-time">
-            {% if cv_update_date %}
-              {{ cv_update_date | date: "%B %-d, %Y" }}
+    {% if cv_update_url %}
+      <li class="recent-update-item" data-update-source="cv_links" data-update-type="cv" data-update-date="{{ cv_update_date }}" data-update-date-key="{{ cv_item.date_key }}" data-update-date-label="{{ cv_item.date_label }}" data-update-url="{{ cv_update_url }}">
+        <time datetime="{{ cv_update_date }}" class="recent-update-time">
+          {% if cv_update_date %}
+            {{ cv_update_date | date: "%B %-d, %Y" }}
             {% elsif cv_item.date_label %}
               {{ cv_item.date_label }}
             {% elsif cv_item.date_key %}
@@ -90,8 +90,7 @@
 {% endfor %}
 
 {% for letter in site.data.ft_letters %}
-  {% assign letter_ts = letter.date | date: "%s" | plus: 0 %}
-  {% if letter.date and letter.pdf and letter_ts >= cutoff_ts and letter_ts <= now_ts %}
+  {% if letter.date and letter.pdf %}
     <li class="recent-update-item" data-update-source="ft_letters" data-update-type="ft_letter" data-update-date="{{ letter.date }}" data-update-url="{{ letter.pdf }}">
       <time datetime="{{ letter.date }}" class="recent-update-time">
         {{ letter.date | date: "%B %-d, %Y" }}

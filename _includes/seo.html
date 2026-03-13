@@ -6,7 +6,18 @@
 {% endif %}
 {% assign page_description = page.description | default: site.description %}
 {% assign page_image = page.image | default: site.image | default: '/assets/img/daniel-joseph-aronoff-portrait.jpeg' %}
-{% assign canonical_url = page.url | absolute_url %}
+{% assign seo_base_url = site.seo_base_url %}
+{% if seo_base_url == nil %}
+  {% assign seo_base_url = '' %}
+{% endif %}
+
+{% if seo_base_url != '' %}
+  {% assign canonical_url = seo_base_url | append: page.url %}
+  {% assign seo_image = seo_base_url | append: page_image %}
+{% else %}
+  {% assign canonical_url = page.url %}
+  {% assign seo_image = page_image %}
+{% endif %}
 {% assign profile_url = site.author.same_as | first %}
 {% capture keywords %}Daniel Joseph Aronoff, Daniel Aronoff, Dan Aronoff, Dan J Aronoff, Daniel J. Aronoff, Daniel Aronoff MIT, MIT economist, market design, cryptography, digital currencies, blockchain economics{% endcapture %}
 
@@ -28,12 +39,12 @@
 <meta property="og:description" content="{{ page_description }}">
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:url" content="{{ canonical_url }}">
-<meta property="og:image" content="{{ page_image | absolute_url }}">
+<meta property="og:image" content="{{ seo_image }}">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ page_title }}">
 <meta name="twitter:description" content="{{ page_description }}">
-<meta name="twitter:image" content="{{ page_image | absolute_url }}">
+<meta name="twitter:image" content="{{ seo_image }}">
 {% if profile_url %}
 <meta property="og:see_also" content="{{ profile_url }}">
 <meta property="profile:username" content="daniel-aronoff-968a19b0">
@@ -44,7 +55,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": {{ site.title | jsonify }},
-  "url": {{ site.url | append: site.baseurl | jsonify }},
+  "url": {{ canonical_url | jsonify }},
   "inLanguage": "en-US",
   "author": {
     "@type": "Person",
