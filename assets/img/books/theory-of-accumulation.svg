@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1100" role="img" aria-labelledby="title desc">
+  <title id="title">A Theory of Accumulation and Secular Stagnation cover</title>
+  <desc id="desc">Geometric Bauhaus-inspired book cover placeholder using muted brown tones.</desc>
+  <rect width="760" height="1100" fill="#F4F1EA" stroke="#A3412A" stroke-width="10"/>
+  <rect x="58" y="52" width="644" height="996" fill="#F8F6F0" stroke="#A3412A" stroke-width="4"/>
+  <g fill="none" stroke="#A3412A" stroke-opacity="0.32">
+    <line x1="118" y1="280" x2="642" y2="280" stroke-width="8"/>
+    <line x1="118" y1="460" x2="642" y2="460" stroke-width="8"/>
+    <line x1="118" y1="640" x2="642" y2="640" stroke-width="8"/>
+  </g>
+  <rect x="118" y="190" width="290" height="700" fill="#A3412A" fill-opacity="0.10"/>
+  <rect x="434" y="760" width="188" height="72" fill="#141414" fill-opacity="0.08"/>
+  <rect x="148" y="220" width="110" height="110" fill="#D7D0C4"/>
+  <rect x="148" y="350" width="210" height="20" fill="#68635C"/>
+  <rect x="148" y="390" width="170" height="20" fill="#68635C"/>
+  <rect x="148" y="430" width="130" height="20" fill="#68635C"/>
+  <text x="424" y="430" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="42" fill="#141414" font-weight="600">
+    <tspan x="424" y="430">THEORY OF</tspan>
+    <tspan x="424" y="482">ACCUMULATION</tspan>
+    <tspan x="424" y="534">AND STAGNATION</tspan>
+  </text>
+  <text x="424" y="840" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="28" fill="#68635C">
+    <tspan x="424" y="840">Daniel Joseph Aronoff</tspan>
+  </text>
+  <text x="424" y="910" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#68635C">
+    <tspan x="424" y="910">A Malthusian Approach</tspan>
+    <tspan x="424" y="938">to Contemporary Malaise</tspan>
+  </text>
+</svg>

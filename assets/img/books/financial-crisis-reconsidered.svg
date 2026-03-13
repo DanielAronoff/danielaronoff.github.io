@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1100" role="img" aria-labelledby="title desc">
+  <title id="title">The Financial Crisis Reconsidered cover</title>
+  <desc id="desc">Geometric Bauhaus-inspired book cover placeholder using muted brown tones.</desc>
+  <rect width="760" height="1100" fill="#F4F1EA" stroke="#A3412A" stroke-width="10"/>
+  <rect x="54" y="48" width="652" height="1004" fill="#F8F6F0" stroke="#A3412A" stroke-width="4"/>
+  <g fill="none" stroke="#141414" stroke-opacity="0.25" stroke-width="6">
+    <line x1="100" y1="240" x2="660" y2="240"/>
+    <line x1="100" y1="430" x2="660" y2="430"/>
+    <line x1="100" y1="620" x2="660" y2="620"/>
+  </g>
+  <rect x="128" y="170" width="240" height="760" fill="#A3412A" fill-opacity="0.12" stroke="#A3412A" stroke-width="4"/>
+  <rect x="396" y="190" width="190" height="150" fill="#141414" fill-opacity="0.08"/>
+  <rect x="420" y="220" width="142" height="12" fill="#141414"/>
+  <rect x="420" y="254" width="142" height="12" fill="#141414"/>
+  <rect x="420" y="288" width="112" height="12" fill="#141414"/>
+  <text x="382" y="430" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="42" fill="#141414" font-weight="600" letter-spacing="-0.02em">
+    <tspan x="382" y="430">FINANCIAL</tspan>
+    <tspan x="382" y="482">CRISIS</tspan>
+    <tspan x="382" y="534">RECONSIDERED</tspan>
+  </text>
+  <text x="382" y="820" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" fill="#68635C">
+    <tspan x="382" y="820">Daniel Joseph Aronoff</tspan>
+  </text>
+  <text x="382" y="900" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" fill="#68635C">
+    <tspan x="382" y="900">The Mercantilist Origin of Secular</tspan>
+    <tspan x="382" y="928">Stagnation and Booms</tspan>
+  </text>
+</svg>
