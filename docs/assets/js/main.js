@@ -205,6 +205,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const navigateToRecentUpdate = (url, event) => {
+    if (!url) {
+      return;
+    }
+
+    const wantsNewTab = event?.metaKey || event?.ctrlKey || event?.button === 1;
+    if (wantsNewTab) {
+      window.open(url, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    window.location.assign(url);
+  };
+
+  const wireRecentUpdateItem = (node, url) => {
+    if (!node || !url || node.dataset.clickBound === "true") {
+      return;
+    }
+
+    node.dataset.clickBound = "true";
+    node.tabIndex = 0;
+
+    node.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        return;
+      }
+
+      navigateToRecentUpdate(url, event);
+    });
+
+    node.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+
+      event.preventDefault();
+      navigateToRecentUpdate(url, event);
+    });
+  };
+
   const clampUpdateList = (list) => {
     if (!list) {
       return;
@@ -280,6 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
           timeNode.textContent = entry.label;
         }
       }
+      wireRecentUpdateItem(node, entry.url);
       fragment.appendChild(node);
     });
 
