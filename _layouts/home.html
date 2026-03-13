@@ -13,7 +13,7 @@ layout: default
       <section class="meta-block" id="quick-links">
         <h2>Quick links</h2>
         <ul class="action-list">
-          {% assign quick_links = site.pages | where_exp: "item", "item.nav == true and item.url != '/'" | sort: "nav_order" %}
+          {% assign quick_links = site.pages | where_exp: "item", "item.nav == true and item.url != '/' and item.url != '/recent-updates/'" | sort: "nav_order" %}
           {% for item in quick_links %}
             <li><a class="button-link" href="{{ item.url | relative_url }}">{{ item.nav_title | default: item.title }}</a></li>
           {% endfor %}
@@ -64,12 +64,4 @@ layout: default
       </ul>
     </div>
   </div>
-</section>
-
-<section class="home-recent-updates">
-  <p class="section-label">Recent updates</p>
-  <p class="recent-updates__empty" data-recent-updates-empty hidden>No dated updates appeared in the last 12 months.</p>
-  <ul class="recent-updates-list" data-recent-updates-list data-recent-updates-window="12" data-recent-updates-limit="8" data-recent-updates-refresh-days="30">
-    {% include recent-updates-items.html %}
-  </ul>
 </section>

@@ -1,5 +1,12 @@
+{% assign window_months = include.window_months | default: 12 | plus: 0 %}
+{% assign now_ts = site.time | date: "%s" | plus: 0 %}
+{% assign seconds_per_month = 2628000 %}
+{% assign cutoff_seconds = window_months | times: seconds_per_month %}
+{% assign cutoff_ts = now_ts | minus: cutoff_seconds %}
+
 {% for manual_item in site.data.recent_updates %}
-  {% if manual_item.date and manual_item.url %}
+  {% assign manual_ts = manual_item.date | date: "%s" | plus: 0 %}
+  {% if manual_item.date and manual_item.url and manual_ts >= cutoff_ts and manual_ts <= now_ts %}
     <li class="recent-update-item" data-update-source="manual" data-update-type="announcement" data-update-date="{{ manual_item.date }}" data-update-url="{{ manual_item.url }}">
       <time datetime="{{ manual_item.date }}" class="recent-update-time">
         {{ manual_item.date | date: "%B %-d, %Y" }}
@@ -12,7 +19,8 @@
 {% endfor %}
 
 {% for talk in site.data.talks %}
-  {% if talk.date %}
+  {% assign talk_ts = talk.date | date: "%s" | plus: 0 %}
+  {% if talk.date and talk_ts >= cutoff_ts and talk_ts <= now_ts %}
     {% if talk.video_url %}
       {% assign talk_url = talk.video_url %}
     {% elsif talk.links %}
@@ -21,11 +29,11 @@
       {% assign talk_url = nil %}
     {% endif %}
 
-    {% if talk_url %}
-      <li class="recent-update-item" data-update-source="talks" data-update-type="talk" data-update-date="{{ talk.date }}" data-update-url="{{ talk_url }}">
-        <time datetime="{{ talk.date }}" class="recent-update-time">
-          {{ talk.date | date: "%B %-d, %Y" }}
-        </time>
+      {% if talk_url %}
+        <li class="recent-update-item" data-update-source="talks" data-update-type="talk" data-update-date="{{ talk.date }}" data-update-url="{{ talk_url }}">
+          <time datetime="{{ talk.date }}" class="recent-update-time">
+            {{ talk.date | date: "%B %-d, %Y" }}
+          </time>
         <a class="recent-update-link" href="{{ talk_url }}">
           {{ talk.title }}{% if talk.event %} · {{ talk.event }}{% endif %}
         </a>
@@ -36,7 +44,8 @@
 
 {% for cv_category in site.data.cv_links %}
   {% for cv_item in cv_category.items %}
-    {% if cv_item.date %}
+    {% assign cv_ts = cv_item.date | date: "%s" | plus: 0 %}
+    {% if cv_item.date and cv_ts >= cutoff_ts and cv_ts <= now_ts %}
       {% assign cv_update_url = nil %}
 
       {% if cv_item.links %}
@@ -67,7 +76,8 @@
 {% endfor %}
 
 {% for letter in site.data.ft_letters %}
-  {% if letter.date and letter.pdf %}
+  {% assign letter_ts = letter.date | date: "%s" | plus: 0 %}
+  {% if letter.date and letter.pdf and letter_ts >= cutoff_ts and letter_ts <= now_ts %}
     <li class="recent-update-item" data-update-source="ft_letters" data-update-type="ft_letter" data-update-date="{{ letter.date }}" data-update-url="{{ letter.pdf }}">
       <time datetime="{{ letter.date }}" class="recent-update-time">
         {{ letter.date | date: "%B %-d, %Y" }}

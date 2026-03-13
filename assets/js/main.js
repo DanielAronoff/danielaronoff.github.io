@@ -1,47 +1,62 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const recentUpdatesList = document.querySelector("[data-recent-updates-list]");
-  const refreshDays = Number.parseInt(recentUpdatesList?.dataset.recentUpdatesRefreshDays || "", 10);
-  const refreshInterval = Number.isFinite(refreshDays) && refreshDays > 0 ? refreshDays * 24 * 60 * 60 * 1000 : 0;
+  const parseRefreshDays = (list) => {
+    const refreshDays = Number.parseInt(list?.dataset?.recentUpdatesRefreshDays || "", 10);
+    if (Number.isFinite(refreshDays) && refreshDays > 0) {
+      return refreshDays;
+    }
+    return 30;
+  };
 
-  const clampUpdateList = () => {
-    const list = document.querySelector("[data-recent-updates-list]");
+  const parseWindowMonths = (list) => {
+    const windowMonths = Number.parseInt(list?.dataset?.recentUpdatesWindow || "12", 10);
+    return Number.isFinite(windowMonths) && windowMonths > 0 ? windowMonths : 12;
+  };
+
+  const parseMaxItems = (list) => {
+    const maxItems = Number.parseInt(list?.dataset?.recentUpdatesLimit || "", 10);
+    return Number.isFinite(maxItems) && maxItems > 0 ? maxItems : null;
+  };
+
+  const getEmptyState = (list) => {
+    const scope = list.closest("section") || list.parentElement;
+    return scope ? scope.querySelector("[data-recent-updates-empty]") : null;
+  };
+
+  const safeSetEmptyState = (emptyNode, visibleCount) => {
+    if (!emptyNode) {
+      return;
+    }
+    emptyNode.hidden = visibleCount > 0;
+  };
+
+  const toIsoDate = (value) => {
+    if (!value) {
+      return null;
+    }
+
+    const date = new Date(`${value}T00:00:00Z`);
+    if (Number.isNaN(date.getTime())) {
+      return null;
+    }
+    return date.toISOString().slice(0, 10);
+  };
+
+  const clampUpdateList = (list) => {
     if (!list) {
       return;
     }
 
     const updateItems = Array.from(list.querySelectorAll("[data-update-date][data-update-url]"));
-    const scope = list.closest("section") || list.parentElement;
-    const emptyState = scope ? scope.querySelector("[data-recent-updates-empty]") : null;
+    const emptyState = getEmptyState(list);
     const now = new Date();
     const fragment = document.createDocumentFragment();
-    const windowMonths = Number.parseInt(list.dataset.recentUpdatesWindow || "12", 10);
-    const maxItems = Number.parseInt(list.dataset.recentUpdatesLimit || "", 10);
+    const windowMonths = parseWindowMonths(list);
+    const maxItems = parseMaxItems(list);
     const hasWindow = Number.isFinite(windowMonths) && windowMonths > 0;
-    const hasMaxItems = Number.isFinite(maxItems) && maxItems > 0;
-
     const cutoff = new Date(now);
     if (hasWindow) {
       cutoff.setMonth(cutoff.getMonth() - windowMonths);
     }
-
-    const safeSetEmptyState = (visibleCount) => {
-      if (!emptyState) {
-        return;
-      }
-      emptyState.hidden = visibleCount > 0;
-    };
-
-    const toIsoDate = (value) => {
-      if (!value) {
-        return null;
-      }
-
-      const date = new Date(`${value}T00:00:00Z`);
-      if (Number.isNaN(date.getTime())) {
-        return null;
-      }
-      return date.toISOString().slice(0, 10);
-    };
 
     const sorted = updateItems
       .map((item) => {
@@ -84,25 +99,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     list.textContent = "";
-    const applySortedItems = (itemsToRender) => {
-      itemsToRender.forEach((entry, index) => {
-        const node = entry.item ? entry.item : entry;
-        if (index === 0) {
-          node.classList.add("is-first");
-        } else {
-          node.classList.remove("is-first");
-        }
-        if (entry.item) {
-          node.querySelector("time")?.setAttribute("datetime", entry.iso);
-        }
-        fragment.appendChild(node);
-      });
-    };
 
-    const finalItems = hasMaxItems ? deduped.slice(0, maxItems) : deduped;
-    applySortedItems(finalItems);
+    const finalItems = maxItems ? deduped.slice(0, maxItems) : deduped;
+
+    finalItems.forEach((entry, index) => {
+      const node = entry.item;
+      if (index === 0) {
+        node.classList.add("is-first");
+      } else {
+        node.classList.remove("is-first");
+      }
+      node.querySelector("time")?.setAttribute("datetime", entry.iso);
+      fragment.appendChild(node);
+    });
+
     list.appendChild(fragment);
-    safeSetEmptyState(finalItems.length);
+    safeSetEmptyState(emptyState, finalItems.length);
+  };
+
+  const clampAllUpdateLists = () => {
+    const lists = Array.from(document.querySelectorAll("[data-recent-updates-list]"));
+    if (!lists.length) {
+      return;
+    }
+
+    const intervals = lists
+      .map((list) => parseRefreshDays(list))
+      .filter((value) => Number.isFinite(value) && value > 0);
+
+    lists.forEach(clampUpdateList);
+
+    return intervals;
   };
 
   const coverLinks = document.querySelectorAll("[data-book-cover]");
@@ -156,10 +183,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  clampUpdateList();
-
-  if (refreshInterval > 0) {
-    window.setInterval(clampUpdateList, refreshInterval);
+  const refreshIntervals = clampAllUpdateLists();
+  if (refreshIntervals && refreshIntervals.length > 0) {
+    const effectiveRefreshDays = Math.min(...refreshIntervals);
+    const refreshInterval = effectiveRefreshDays > 0 ? effectiveRefreshDays : 30;
+    window.setInterval(clampAllUpdateLists, refreshInterval * 24 * 60 * 60 * 1000);
   }
 
   const searchInput = document.querySelector("[data-ft-search-input]");
