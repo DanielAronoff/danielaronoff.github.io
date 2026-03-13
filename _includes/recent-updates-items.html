@@ -44,27 +44,41 @@
 
 {% for cv_category in site.data.cv_links %}
   {% for cv_item in cv_category.items %}
-    {% assign cv_ts = cv_item.date | date: "%s" | plus: 0 %}
-    {% if cv_item.date and cv_ts >= cutoff_ts and cv_ts <= now_ts %}
+    {% assign cv_update_date = cv_item.date %}
+
+    {% if cv_update_date == nil and cv_item.date_key %}
+      {% assign cv_date_year = cv_item.date_key | slice: 0, 4 %}
+      {% assign cv_date_month = cv_item.date_key | slice: 4, 2 %}
+      {% assign cv_date_day = cv_item.date_key | slice: 6, 2 %}
+      {% assign cv_update_date = cv_date_year | append: "-" | append: cv_date_month | append: "-" | append: cv_date_day %}
+    {% endif %}
+
+    {% if cv_item.links %}
       {% assign cv_update_url = nil %}
 
-      {% if cv_item.links %}
-        {% assign cv_update_video = cv_item.links | where_exp: "link", "link.label contains 'Video'" | first %}
-        {% assign cv_update_slides = cv_item.links | where_exp: "link", "link.label contains 'Slides'" | first %}
+      {% assign cv_update_video = cv_item.links | where_exp: "link", "link.label contains 'Video'" | first %}
+      {% assign cv_update_slides = cv_item.links | where_exp: "link", "link.label contains 'Slides'" | first %}
 
-        {% if cv_update_video %}
-          {% assign cv_update_url = cv_update_video.url %}
-        {% elsif cv_update_slides %}
-          {% assign cv_update_url = cv_update_slides.url %}
-        {% elsif cv_item.links.first %}
-          {% assign cv_update_url = cv_item.links.first.url %}
-        {% endif %}
+      {% if cv_update_video %}
+        {% assign cv_update_url = cv_update_video.url %}
+      {% elsif cv_update_slides %}
+        {% assign cv_update_url = cv_update_slides.url %}
+      {% elsif cv_item.links.first %}
+        {% assign cv_update_url = cv_item.links.first.url %}
       {% endif %}
 
       {% if cv_update_url %}
-        <li class="recent-update-item" data-update-source="cv_links" data-update-type="cv" data-update-date="{{ cv_item.date }}" data-update-url="{{ cv_update_url }}">
-          <time datetime="{{ cv_item.date }}" class="recent-update-time">
-            {{ cv_item.date | date: "%B %-d, %Y" }}
+        <li class="recent-update-item" data-update-source="cv_links" data-update-type="cv" data-update-date="{{ cv_update_date }}" data-update-date-key="{{ cv_item.date_key }}" data-update-date-label="{{ cv_item.date_label }}" data-update-url="{{ cv_update_url }}">
+          <time datetime="{{ cv_update_date }}" class="recent-update-time">
+            {% if cv_update_date %}
+              {{ cv_update_date | date: "%B %-d, %Y" }}
+            {% elsif cv_item.date_label %}
+              {{ cv_item.date_label }}
+            {% elsif cv_item.date_key %}
+              {{ cv_item.date_key }}
+            {% else %}
+              Recent
+            {% endif %}
           </time>
           <a class="recent-update-link" href="{{ cv_update_url }}">
             {{ cv_item.title }}{% if cv_item.event %} · {{ cv_item.event }}{% endif %}

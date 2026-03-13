@@ -41,6 +41,138 @@ document.addEventListener("DOMContentLoaded", () => {
     return date.toISOString().slice(0, 10);
   };
 
+  const parseDateKey = (value) => {
+    if (!value) {
+      return null;
+    }
+
+    const text = String(value).trim();
+    if (!/^\d{8}$/.test(text)) {
+      return null;
+    }
+
+    const candidate = `${text.slice(0, 4)}-${text.slice(4, 6)}-${text.slice(6, 8)}T00:00:00Z`;
+    const parsed = new Date(candidate);
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+  };
+
+  const parseMonthLabel = (value) => {
+    if (!value) {
+      return null;
+    }
+
+    const monthMap = {
+      jan: 0,
+      feb: 1,
+      mar: 2,
+      apr: 3,
+      may: 4,
+      jun: 5,
+      jul: 6,
+      aug: 7,
+      sep: 8,
+      sept: 8,
+      oct: 9,
+      nov: 10,
+      dec: 11,
+    };
+    const match = String(value).match(/([A-Za-z]{3,4})\.?\s+(\d{4})/);
+
+    if (!match) {
+      return null;
+    }
+
+    const month = monthMap[match[1].slice(0, 3).toLowerCase()];
+    if (month === undefined) {
+      return null;
+    }
+
+    const date = new Date(Date.UTC(Number(match[2]), month, 1));
+    return Number.isNaN(date.getTime()) ? null : date;
+  };
+
+  const inferDateFromUrl = (value) => {
+    if (!value) {
+      return null;
+    }
+
+    const url = decodeURIComponent(String(value));
+
+    const arxivMatch = url.match(/arxiv(?:\.org\/abs\/|[.:])(\d{2})(\d{2})\.\d+/i);
+    if (arxivMatch && arxivMatch[1] && arxivMatch[2]) {
+      const year = Number.parseInt(`20${arxivMatch[1]}`, 10);
+      const month = Number.parseInt(arxivMatch[2], 10);
+      return new Date(Date.UTC(year, month - 1, 1));
+    }
+
+    const eprintMatch = url.match(/eprint\.iacr\.org\/(\d{4})\/\d+/i);
+    if (eprintMatch && eprintMatch[1]) {
+      return new Date(Date.UTC(Number(eprintMatch[1]), 0, 1));
+    }
+
+    const dateMatch = url.match(/([0-9]{1,2})[.\-_](\d{1,2})[.\-_](20\d{2})/);
+    if (dateMatch) {
+      const month = Number.parseInt(dateMatch[1], 10);
+      const day = Number.parseInt(dateMatch[2], 10);
+      const year = Number.parseInt(dateMatch[3], 10);
+      const candidate = new Date(Date.UTC(year, month - 1, day));
+      return Number.isNaN(candidate.getTime()) ? null : candidate;
+    }
+
+    const yearMonthMatch = url.match(/(20\d{2})[.\-_](\d{1,2})[.\-_]/);
+    if (yearMonthMatch) {
+      const year = Number.parseInt(yearMonthMatch[1], 10);
+      const month = Number.parseInt(yearMonthMatch[2], 10);
+      return new Date(Date.UTC(year, month - 1, 1));
+    }
+
+    return null;
+  };
+
+  const deriveDateFromItem = (item) => {
+    const rawValue = item.dataset.updateDate;
+    const keyValue = item.dataset.updateDateKey;
+    const labelValue = item.dataset.updateDateLabel;
+    const parsedFromValue = toIsoDate(rawValue) ? new Date(`${rawValue}T00:00:00Z`) : null;
+
+    if (parsedFromValue) {
+      return {
+        parsed: parsedFromValue,
+        iso: toIsoDate(rawValue),
+        label: parsedFromValue.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }),
+      };
+    }
+
+    const dateFromKey = parseDateKey(keyValue);
+    if (dateFromKey) {
+      return {
+        parsed: dateFromKey,
+        iso: dateFromKey.toISOString().slice(0, 10),
+        label: dateFromKey.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }),
+      };
+    }
+
+    const dateFromLabel = parseMonthLabel(labelValue);
+    if (dateFromLabel) {
+      return {
+        parsed: dateFromLabel,
+        iso: dateFromLabel.toISOString().slice(0, 10),
+        label: dateFromLabel.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }),
+      };
+    }
+
+    const dateFromUrl = inferDateFromUrl(item.dataset.updateUrl);
+    if (dateFromUrl) {
+      return {
+        parsed: dateFromUrl,
+        iso: dateFromUrl.toISOString().slice(0, 10),
+        label: dateFromUrl.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }),
+      };
+    }
+
+    return null;
+  };
+
   const clampUpdateList = (list) => {
     if (!list) {
       return;
@@ -60,15 +192,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sorted = updateItems
       .map((item) => {
-        const value = item.dataset.updateDate;
-        const parsed = new Date(`${value}T00:00:00Z`);
-        if (Number.isNaN(parsed.getTime())) {
+        const inferred = deriveDateFromItem(item);
+        if (!inferred) {
           return null;
         }
         return {
           item,
-          parsed,
-          iso: toIsoDate(value),
+          parsed: inferred.parsed,
+          iso: inferred.iso,
+          label: inferred.label,
           url: item.dataset.updateUrl || "",
         };
       })
@@ -110,6 +242,12 @@ document.addEventListener("DOMContentLoaded", () => {
         node.classList.remove("is-first");
       }
       node.querySelector("time")?.setAttribute("datetime", entry.iso);
+      if (entry.label) {
+        const timeNode = node.querySelector("time");
+        if (timeNode) {
+          timeNode.textContent = entry.label;
+        }
+      }
       fragment.appendChild(node);
     });
 
