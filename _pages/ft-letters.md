@@ -3,7 +3,7 @@ layout: page
 title: FT Letters
 nav: true
 nav_title: FT Letters
-nav_order: 5
+nav_order: 6
 permalink: /ft-letters/
 description: My letters to the Financial Times, indexed, searchable, and available as downloadable PDFs.
 lede: A public, searchable index of my letters to the Financial Times, grouped by year and linked to downloadable hosted PDFs.

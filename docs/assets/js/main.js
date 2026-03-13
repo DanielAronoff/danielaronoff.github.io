@@ -6,11 +6,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const updateItems = Array.from(list.querySelectorAll("[data-update-date][data-update-url]"));
-    const originalItems = updateItems.slice();
-    const emptyState = document.querySelector("[data-recent-updates-empty]");
+    const scope = list.closest("section") || list.parentElement;
+    const emptyState = scope ? scope.querySelector("[data-recent-updates-empty]") : null;
     const now = new Date();
-    const cutoff = new Date(now);
     const fragment = document.createDocumentFragment();
+    const windowMonths = Number.parseInt(list.dataset.recentUpdatesWindow || "", 10);
+    const maxItems = Number.parseInt(list.dataset.recentUpdatesLimit || "", 10);
+    const hasWindow = Number.isFinite(windowMonths) && windowMonths > 0;
+    const hasMaxItems = Number.isFinite(maxItems) && maxItems > 0;
+
+    const cutoff = new Date(now);
+    if (hasWindow) {
+      cutoff.setMonth(cutoff.getMonth() - windowMonths);
+    }
+
     const safeSetEmptyState = (visibleCount) => {
       if (!emptyState) {
         return;
@@ -18,16 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
       emptyState.hidden = visibleCount > 0;
     };
 
-    cutoff.setMonth(cutoff.getMonth() - 12);
-
     const toIsoDate = (value) => {
       if (!value) {
-        return "";
+        return null;
       }
 
       const date = new Date(`${value}T00:00:00Z`);
       if (Number.isNaN(date.getTime())) {
-        return "";
+        return null;
       }
       return date.toISOString().slice(0, 10);
     };
@@ -49,6 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
       .filter((entry) => {
         if (!entry || !entry.iso) {
           return false;
+        }
+
+        if (!hasWindow) {
+          return entry.parsed <= now;
         }
 
         return entry.parsed >= cutoff && entry.parsed <= now;
@@ -84,24 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
 
-    if (deduped.length === 0) {
-      originalItems.forEach((item, index) => {
-        if (index === 0) {
-          item.classList.add("is-first");
-        } else {
-          item.classList.remove("is-first");
-        }
-      });
-      applySortedItems(originalItems);
-      safeSetEmptyState(originalItems.length);
-      list.appendChild(fragment);
-      return;
-    }
-
-    applySortedItems(deduped);
+    const finalItems = hasMaxItems ? deduped.slice(0, maxItems) : deduped;
+    applySortedItems(finalItems);
     list.appendChild(fragment);
-
-    safeSetEmptyState(deduped.length);
+    safeSetEmptyState(finalItems.length);
   };
 
   const coverLinks = document.querySelectorAll("[data-book-cover]");

@@ -3,7 +3,7 @@ layout: page
 title: Books and Chapters
 nav: true
 nav_title: Books and Chapters
-nav_order: 3
+nav_order: 4
 permalink: /books/
 description: Books and chapters by Daniel Joseph Aronoff.
 ---

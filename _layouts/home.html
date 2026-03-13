@@ -66,105 +66,10 @@ layout: default
   </div>
 </section>
 
-<section class="home-recent-updates" id="recent-updates">
+<section class="home-recent-updates">
   <p class="section-label">Recent updates</p>
   <p class="recent-updates__empty" data-recent-updates-empty hidden>No dated updates appeared in the last 12 months.</p>
-  <ul class="recent-updates-list" data-recent-updates-list>
-    {% for manual_item in site.data.recent_updates %}
-      {% if manual_item.date and manual_item.url %}
-        <li
-          class="recent-update-item"
-          data-update-date="{{ manual_item.date }}"
-          data-update-url="{{ manual_item.url }}"
-        >
-          <time datetime="{{ manual_item.date }}" class="recent-update-time">
-            {{ manual_item.date | date: "%B %-d, %Y" }}
-          </time>
-          <a class="recent-update-link" href="{{ manual_item.url }}">
-            {{ manual_item.caption }}
-          </a>
-        </li>
-      {% endif %}
-    {% endfor %}
-
-    {% for talk in site.data.talks %}
-      {% if talk.date %}
-        {% if talk.video_url %}
-          {% assign talk_url = talk.video_url %}
-        {% elsif talk.links %}
-          {% assign talk_url = talk.links.first.url %}
-        {% else %}
-          {% assign talk_url = nil %}
-        {% endif %}
-
-        {% if talk_url %}
-          <li
-            class="recent-update-item"
-            data-update-date="{{ talk.date }}"
-            data-update-url="{{ talk_url }}"
-          >
-            <time datetime="{{ talk.date }}" class="recent-update-time">
-              {{ talk.date | date: "%B %-d, %Y" }}
-            </time>
-            <a class="recent-update-link" href="{{ talk_url }}">
-              {{ talk.title }}{% if talk.event %} · {{ talk.event }}{% endif %}
-            </a>
-          </li>
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-
-    {% for cv_category in site.data.cv_links %}
-      {% for cv_item in cv_category.items %}
-        {% if cv_item.date %}
-          {% assign cv_update_url = nil %}
-
-          {% if cv_item.links %}
-            {% assign cv_update_video = cv_item.links | where_exp: "link", "link.label contains 'Video'" | first %}
-            {% assign cv_update_slides = cv_item.links | where_exp: "link", "link.label contains 'Slides'" | first %}
-
-            {% if cv_update_video %}
-              {% assign cv_update_url = cv_update_video.url %}
-            {% elsif cv_update_slides %}
-              {% assign cv_update_url = cv_update_slides.url %}
-            {% elsif cv_item.links.first %}
-              {% assign cv_update_url = cv_item.links.first.url %}
-            {% endif %}
-          {% endif %}
-
-          {% if cv_update_url %}
-            <li
-              class="recent-update-item"
-              data-update-date="{{ cv_item.date }}"
-              data-update-url="{{ cv_update_url }}"
-            >
-              <time datetime="{{ cv_item.date }}" class="recent-update-time">
-                {{ cv_item.date | date: "%B %-d, %Y" }}
-              </time>
-              <a class="recent-update-link" href="{{ cv_update_url }}">
-                {{ cv_item.title }}{% if cv_item.event %} · {{ cv_item.event }}{% endif %}
-              </a>
-            </li>
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-    {% endfor %}
-
-    {% for letter in site.data.ft_letters %}
-      {% if letter.date and letter.pdf %}
-        <li
-          class="recent-update-item"
-          data-update-date="{{ letter.date }}"
-          data-update-url="{{ letter.pdf }}"
-        >
-          <time datetime="{{ letter.date }}" class="recent-update-time">
-            {{ letter.date | date: "%B %-d, %Y" }}
-          </time>
-          <a class="recent-update-link" href="{{ letter.pdf }}">
-            {{ letter.title | default: "FT Letter" }}
-          </a>
-        </li>
-      {% endif %}
-    {% endfor %}
+  <ul class="recent-updates-list" data-recent-updates-list data-recent-updates-window="12" data-recent-updates-limit="8">
+    {% include recent-updates-items.html %}
   </ul>
 </section>

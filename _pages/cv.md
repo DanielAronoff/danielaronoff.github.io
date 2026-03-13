@@ -3,7 +3,7 @@ layout: page
 title: Curriculum Vitae
 nav: true
 nav_title: CV
-nav_order: 2
+nav_order: 3
 permalink: /cv/
 description: Download Daniel Joseph Aronoff's CV and browse linked papers, talks, slides, and project materials.
 lede: Download the current CV and browse the linked materials surfaced from it in structured form.
