@@ -212,7 +212,12 @@
 }
 
 .recent-update-link {
+  display: block;
   text-underline-offset: 0.18em;
+}
+
+.recent-update-title {
+  display: block;
 }
 
 .meta-line,
