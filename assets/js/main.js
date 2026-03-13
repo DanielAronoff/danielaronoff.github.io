@@ -226,9 +226,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     node.dataset.clickBound = "true";
     node.tabIndex = 0;
+    const link = node.querySelector(".recent-update-link");
+
+    if (link) {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        navigateToRecentUpdate(url, event);
+      });
+    }
 
     node.addEventListener("click", (event) => {
-      if (event.target.closest("a")) {
+      if (link && link.contains(event.target)) {
         return;
       }
 
