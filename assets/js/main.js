@@ -6,10 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const updateItems = Array.from(list.querySelectorAll("[data-update-date][data-update-url]"));
+    const originalItems = updateItems.slice();
     const emptyState = document.querySelector("[data-recent-updates-empty]");
     const now = new Date();
     const cutoff = new Date(now);
     const fragment = document.createDocumentFragment();
+    const safeSetEmptyState = (visibleCount) => {
+      if (!emptyState) {
+        return;
+      }
+      emptyState.hidden = visibleCount > 0;
+    };
 
     cutoff.setMonth(cutoff.getMonth() - 12);
 
@@ -62,21 +69,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     list.textContent = "";
-    deduped.forEach((entry, index) => {
-      const node = entry.item;
-      if (index === 0) {
-        node.classList.add("is-first");
-      } else {
-        node.classList.remove("is-first");
-      }
-      node.querySelector("time")?.setAttribute("datetime", entry.iso);
-      fragment.appendChild(node);
-    });
+    const applySortedItems = (itemsToRender) => {
+      itemsToRender.forEach((entry, index) => {
+        const node = entry.item ? entry.item : entry;
+        if (index === 0) {
+          node.classList.add("is-first");
+        } else {
+          node.classList.remove("is-first");
+        }
+        if (entry.item) {
+          node.querySelector("time")?.setAttribute("datetime", entry.iso);
+        }
+        fragment.appendChild(node);
+      });
+    };
+
+    if (deduped.length === 0) {
+      originalItems.forEach((item, index) => {
+        if (index === 0) {
+          item.classList.add("is-first");
+        } else {
+          item.classList.remove("is-first");
+        }
+      });
+      applySortedItems(originalItems);
+      safeSetEmptyState(originalItems.length);
+      list.appendChild(fragment);
+      return;
+    }
+
+    applySortedItems(deduped);
     list.appendChild(fragment);
 
-    if (emptyState) {
-      emptyState.hidden = deduped.length > 0;
-    }
+    safeSetEmptyState(deduped.length);
   };
 
   const coverLinks = document.querySelectorAll("[data-book-cover]");
