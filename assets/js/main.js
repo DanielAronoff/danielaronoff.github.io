@@ -191,6 +191,20 @@ document.addEventListener("DOMContentLoaded", () => {
     return null;
   };
 
+  const normalizeUpdateUrl = (value) => {
+    if (!value) {
+      return "";
+    }
+
+    try {
+      const parsed = new URL(value, window.location.origin);
+      parsed.hash = "";
+      return parsed.toString();
+    } catch {
+      return String(value).trim();
+    }
+  };
+
   const clampUpdateList = (list) => {
     if (!list) {
       return;
@@ -233,9 +247,24 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .sort((left, right) => right.parsed.getTime() - left.parsed.getTime());
 
+    const seenUrls = new Set();
+    const deduped = sorted.filter((entry) => {
+      const normalizedUrl = normalizeUpdateUrl(entry.url);
+      if (!normalizedUrl) {
+        return true;
+      }
+
+      if (seenUrls.has(normalizedUrl)) {
+        return false;
+      }
+
+      seenUrls.add(normalizedUrl);
+      return true;
+    });
+
     list.textContent = "";
 
-    const finalItems = maxItems ? sorted.slice(0, maxItems) : sorted;
+    const finalItems = maxItems ? deduped.slice(0, maxItems) : deduped;
 
     finalItems.forEach((entry, index) => {
       const node = entry.item;
