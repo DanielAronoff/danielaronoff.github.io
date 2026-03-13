@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const recentUpdatesList = document.querySelector("[data-recent-updates-list]");
+  const refreshDays = Number.parseInt(recentUpdatesList?.dataset.recentUpdatesRefreshDays || "", 10);
+  const refreshInterval = Number.isFinite(refreshDays) && refreshDays > 0 ? refreshDays * 24 * 60 * 60 * 1000 : 0;
+
   const clampUpdateList = () => {
     const list = document.querySelector("[data-recent-updates-list]");
     if (!list) {
@@ -10,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const emptyState = scope ? scope.querySelector("[data-recent-updates-empty]") : null;
     const now = new Date();
     const fragment = document.createDocumentFragment();
-    const windowMonths = Number.parseInt(list.dataset.recentUpdatesWindow || "", 10);
+    const windowMonths = Number.parseInt(list.dataset.recentUpdatesWindow || "12", 10);
     const maxItems = Number.parseInt(list.dataset.recentUpdatesLimit || "", 10);
     const hasWindow = Number.isFinite(windowMonths) && windowMonths > 0;
     const hasMaxItems = Number.isFinite(maxItems) && maxItems > 0;
@@ -153,6 +157,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   clampUpdateList();
+
+  if (refreshInterval > 0) {
+    window.setInterval(clampUpdateList, refreshInterval);
+  }
 
   const searchInput = document.querySelector("[data-ft-search-input]");
 
