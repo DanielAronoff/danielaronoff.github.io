@@ -54,6 +54,10 @@
 
 {% for cv_category in site.data.cv_links %}
   {% for cv_item in cv_category.items %}
+    {% if cv_item.exclude_from_recent_updates %}
+      {% continue %}
+    {% endif %}
+
     {% assign cv_update_date = cv_item.date %}
 
     {% if cv_update_date == nil and cv_item.date_key %}

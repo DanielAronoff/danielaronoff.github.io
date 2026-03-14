@@ -49,6 +49,7 @@
       date: "2025-12-01"
       date_key: 20251201
       date_label: "Dec. 2025"
+      exclude_from_recent_updates: true
       links:
         - label: "arXiv"
           url: "https://arxiv.org/abs/2512.23842"
@@ -58,7 +59,7 @@
       date_label: "Dec. 2025"
       links:
         - label: "arXiv"
-          url: "https://arxiv.org/html/2512.23842v1"
+          url: "https://arxiv.org/abs/2512.23842"
     - title: "Conservation Priorities and Environmental Offsets: Markets for Florida Wetlands"
       note: "NBER working paper."
       links:
@@ -77,7 +78,7 @@
       note: "MIT Media Lab Digital Currency Initiative research project."
       links:
         - label: "Project"
-          url: "https://www.dci.mit.edu/posts/mit-dci-releases-the-hidden-plumbing-of-stablecoins-financial-and-technological-risks-in-the-genius-act-era"
+          url: "https://www.dci.mit.edu/projects/hidden-plumbing-stablecoins"
     - title: "DeFi for the Securities Industry"
       note: "Finadium Research Report."
       links:
