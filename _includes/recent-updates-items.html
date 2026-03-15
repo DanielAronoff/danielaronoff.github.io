@@ -6,7 +6,7 @@
     {% unless seen_update_urls contains manual_url_key %}
       {% assign seen_update_urls = seen_update_urls | append: manual_item.url | append: "|" %}
       <li class="recent-update-item" data-update-source="manual" data-update-type="announcement" data-update-date="{{ manual_item.date }}" data-update-url="{{ manual_item.url }}">
-        <a class="recent-update-link" href="{{ manual_item.url }}">
+        <a class="recent-update-link" href="{{ manual_item.url }}" onclick="window.location.href=this.href; return true;">
           <time datetime="{{ manual_item.date }}" class="recent-update-time">
             {{ manual_item.date | date: "%B %-d, %Y" }}
           </time>
@@ -32,7 +32,7 @@
       {% unless seen_update_urls contains talk_url_key %}
         {% assign seen_update_urls = seen_update_urls | append: talk_url | append: "|" %}
         <li class="recent-update-item" data-update-source="talks" data-update-type="talk" data-update-date="{{ talk.date }}" data-update-date-key="{{ talk.date_key }}" data-update-date-label="{{ talk.date_label }}" data-update-url="{{ talk_url }}">
-          <a class="recent-update-link" href="{{ talk_url }}">
+          <a class="recent-update-link" href="{{ talk_url }}" onclick="window.location.href=this.href; return true;">
             {% if talk.date or talk.date_key or talk.date_label %}
               <time {% if talk.date %}datetime="{{ talk.date }}"{% endif %} class="recent-update-time">
                 {% if talk.date %}
@@ -86,7 +86,7 @@
       {% unless seen_update_urls contains cv_url_key %}
         {% assign seen_update_urls = seen_update_urls | append: cv_update_url | append: "|" %}
         <li class="recent-update-item" data-update-source="cv_links" data-update-type="cv" data-update-date="{{ cv_update_date }}" data-update-date-key="{{ cv_item.date_key }}" data-update-date-label="{{ cv_item.date_label }}" data-update-url="{{ cv_update_url }}">
-          <a class="recent-update-link" href="{{ cv_update_url }}">
+          <a class="recent-update-link" href="{{ cv_update_url }}" onclick="window.location.href=this.href; return true;">
             <time datetime="{{ cv_update_date }}" class="recent-update-time">
               {% if cv_update_date %}
                 {{ cv_update_date | date: "%B %-d, %Y" }}
@@ -113,7 +113,7 @@
     {% unless seen_update_urls contains letter_url_key %}
       {% assign seen_update_urls = seen_update_urls | append: letter.pdf | append: "|" %}
       <li class="recent-update-item" data-update-source="ft_letters" data-update-type="ft_letter" data-update-date="{{ letter.date }}" data-update-url="{{ letter.pdf }}">
-        <a class="recent-update-link" href="{{ letter.pdf }}">
+        <a class="recent-update-link" href="{{ letter.pdf }}" onclick="window.location.href=this.href; return true;">
           <time datetime="{{ letter.date }}" class="recent-update-time">
             {{ letter.date | date: "%B %-d, %Y" }}
           </time>
