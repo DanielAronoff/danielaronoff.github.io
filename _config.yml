@@ -1,16 +1,16 @@
 title: "Daniel Joseph Aronoff: Academic Website"
 description: "Daniel Joseph Aronoff (Dan J. Aronoff, Dan Aronoff) is an economist at MIT working at the intersection of market design, cryptography, and digital currencies."
-url: "https://danieljaronoff.github.io"
+url: "https://danieljaronoff.io"
 baseurl: ""
 # Override this with your primary canonical domain.
 # Keep this set to your canonical public domain.
-seo_base_url: "https://danieljaronoff.github.io"
+seo_base_url: "https://danieljaronoff.io"
 lang: "en"
 timezone: "America/New_York"
 author:
   name: "Daniel Joseph Aronoff"
   email: "daronoff@mit.edu"
-  url: "https://danieljaronoff.github.io"
+  url: "https://danieljaronoff.io"
   same_as:
     - "https://www.linkedin.com/in/daniel-aronoff-968a19b0/"
     - "https://www.mit.edu"
