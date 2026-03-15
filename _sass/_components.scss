@@ -214,6 +214,13 @@
 
 .recent-update-link {
   display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
   cursor: pointer;
   text-underline-offset: 0.18em;
 }
