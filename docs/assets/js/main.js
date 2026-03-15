@@ -308,36 +308,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const bindRecentUpdateClicks = () => {
-    const links = Array.from(document.querySelectorAll(".recent-update-link"));
-    links.forEach((link) => {
-      if (link.dataset.recentUpdateBound) {
-        return;
-      }
-
-      link.dataset.recentUpdateBound = "true";
-      link.addEventListener("click", (event) => {
-        if (event.button !== 0) {
-          return;
-        }
-
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-          return;
-        }
-
-        const href = link.getAttribute("href");
-        if (!href) {
-          return;
-        }
-
-        const parsed = normalizeUpdateUrl(href);
-        if (!parsed) {
-          return;
-        }
-
-        event.preventDefault();
-        window.location.href = parsed;
-      });
-    });
+    // Keep native anchor behavior for recent-update items to ensure reliable navigation.
+    return;
   };
 
   const coverLinks = document.querySelectorAll("[data-book-cover]");
