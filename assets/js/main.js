@@ -308,7 +308,57 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const bindRecentUpdateClicks = () => {
-    return;
+    const links = Array.from(document.querySelectorAll(".recent-update-link[href]"));
+    if (!links.length) {
+      return;
+    }
+
+    const navigateByHref = (link) => {
+      const href = link.getAttribute("href");
+      if (!href) {
+        return;
+      }
+
+      if (link.dataset.recentUpdateNavigationLocked) {
+        return;
+      }
+
+      link.dataset.recentUpdateNavigationLocked = "1";
+      window.location.assign(href);
+    };
+
+    const isPlainActivation = (event) => {
+      if ((event.type === "mousedown" || event.type === "pointerup") && typeof event.button === "number" && event.button !== 0) {
+        return false;
+      }
+
+      if (event.type === "keydown") {
+        return event.key === "Enter" || event.key === " ";
+      }
+
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+        return false;
+      }
+
+      return true;
+    };
+
+    const activate = (event) => {
+      const link = event.currentTarget;
+      if (!isPlainActivation(event)) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      navigateByHref(link);
+    };
+
+    links.forEach((link) => {
+      link.addEventListener("pointerup", activate, true);
+      link.addEventListener("click", activate, true);
+      link.addEventListener("keydown", activate, false);
+    });
   };
 
   const coverLinks = document.querySelectorAll("[data-book-cover]");
