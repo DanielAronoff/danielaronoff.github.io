@@ -65,3 +65,12 @@ layout: default
     </div>
   </div>
 </section>
+
+<section class="home-recent-updates">
+  <p class="section-label">Recent updates</p>
+  <h2 id="home-recent-updates-title">Latest updates</h2>
+  <ul class="recent-updates-list" data-recent-updates-list data-recent-updates-window="12" data-recent-updates-refresh-days="30" data-recent-updates-limit="5">
+    {% include recent-updates-items.html %}
+  </ul>
+  <p><a class="button-link button-link--outline" href="{{ '/recent-updates/' | relative_url }}">View all updates</a></p>
+</section>

@@ -8,8 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const parseWindowMonths = (list) => {
-    const windowMonths = Number.parseInt(list?.dataset?.recentUpdatesWindow || "12", 10);
-    return Number.isFinite(windowMonths) && windowMonths > 0 ? windowMonths : 12;
+    const rawWindow = list?.dataset?.recentUpdatesWindow;
+    if (!rawWindow) {
+      return null;
+    }
+
+    const windowMonths = Number.parseInt(rawWindow, 10);
+    return Number.isFinite(windowMonths) && windowMonths > 0 ? windowMonths : null;
   };
 
   const parseMaxItems = (list) => {
@@ -302,6 +307,39 @@ document.addEventListener("DOMContentLoaded", () => {
     return intervals;
   };
 
+  const bindRecentUpdateClicks = () => {
+    const links = Array.from(document.querySelectorAll(".recent-update-link"));
+    links.forEach((link) => {
+      if (link.dataset.recentUpdateBound) {
+        return;
+      }
+
+      link.dataset.recentUpdateBound = "true";
+      link.addEventListener("click", (event) => {
+        if (event.button !== 0) {
+          return;
+        }
+
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
+
+        const href = link.getAttribute("href");
+        if (!href) {
+          return;
+        }
+
+        const parsed = normalizeUpdateUrl(href);
+        if (!parsed) {
+          return;
+        }
+
+        event.preventDefault();
+        window.location.href = parsed;
+      });
+    });
+  };
+
   const coverLinks = document.querySelectorAll("[data-book-cover]");
   const lightbox = document.querySelector("[data-book-lightbox]");
   const lightboxImage = lightbox ? lightbox.querySelector(".book-lightbox__image") : null;
@@ -353,6 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  bindRecentUpdateClicks();
   const refreshIntervals = clampAllUpdateLists();
   if (refreshIntervals && refreshIntervals.length > 0) {
     const effectiveRefreshDays = Math.min(...refreshIntervals);
