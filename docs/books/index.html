@@ -300,6 +300,27 @@ In A Theory of Accumulation and Secular Stagnation, Aronoff explores Malthus' id
   </div>
 </footer>
 
-    <script src="/assets/js/main.js?v=20260316095856" defer></script>
+    <script>
+  (function () {
+    const promoteRecentUpdateAnchors = () => {
+      const links = document.querySelectorAll("a.recent-update-link[href]");
+      if (!links.length) {
+        return;
+      }
+
+      links.forEach((link) => {
+        link.classList.remove("recent-update-link");
+        link.classList.add("recent-update-item-link");
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", promoteRecentUpdateAnchors, { once: true });
+    } else {
+      promoteRecentUpdateAnchors();
+    }
+  })();
+</script>
+    <script src="/assets/js/main.js?v=20260317091500" defer></script>
   </body>
 </html>

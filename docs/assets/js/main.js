@@ -45,6 +45,100 @@ document.addEventListener("DOMContentLoaded", () => {
     return scope ? scope.querySelector("[data-recent-updates-empty]") : null;
   };
 
+  const promoteRecentUpdateAnchors = () => {
+    const links = document.querySelectorAll("a.recent-update-link[href]");
+
+    if (!window.__recentUpdateClickBound) {
+      window.__recentUpdateClickBound = "1";
+    }
+
+    if (!links.length) {
+      return;
+    }
+
+    links.forEach((link) => {
+      link.classList.add("recent-update-item-link");
+    });
+  };
+
+  const bindRecentUpdateNativeLinks = () => {
+    const selector = "a.recent-update-link[href], a.recent-update-item-link[href]";
+    const links = document.querySelectorAll(selector);
+
+    if (!links.length) {
+      return;
+    }
+
+    links.forEach((link) => {
+      link.classList.add("recent-update-item-link");
+      link.classList.remove("recent-update-link");
+
+      if (link.dataset.recentUpdateNavigationBound === "1") {
+        return;
+      }
+
+      link.dataset.recentUpdateNavigationBound = "1";
+
+      const normalizeUrl = (value) => {
+        if (!value) {
+          return "";
+        }
+
+        try {
+          return new URL(value, window.location.origin).toString();
+        } catch {
+          return String(value).trim();
+        }
+      };
+
+      const shouldIgnoreAux = (event) => {
+        if (!event) {
+          return false;
+        }
+
+        if (event.button !== undefined && event.button !== 0) {
+          return true;
+        }
+
+        return !!(event.ctrlKey || event.metaKey || event.shiftKey || event.altKey);
+      };
+
+      let isNavigating = false;
+      const navigate = (event) => {
+        if (isNavigating || shouldIgnoreAux(event)) {
+          return;
+        }
+
+        const href = normalizeUrl(link.getAttribute("href"));
+        if (!href) {
+          return;
+        }
+
+        isNavigating = true;
+
+        if (event) {
+          event.preventDefault();
+          if (event.stopImmediatePropagation) {
+            event.stopImmediatePropagation();
+          }
+          event.stopPropagation();
+        }
+
+        window.location.href = href;
+      };
+
+      link.addEventListener("mousedown", navigate, { capture: true });
+      link.addEventListener("click", navigate, { capture: true });
+      link.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") {
+          return;
+        }
+
+        navigate(event);
+      });
+    });
+  };
+
   const safeSetEmptyState = (emptyNode, visibleCount) => {
     if (!emptyNode) {
       return;
@@ -307,64 +401,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return intervals;
   };
 
-  const bindRecentUpdateClicks = () => {
-    const links = Array.from(document.querySelectorAll(".recent-update-link[href]"));
-    if (!links.length || window.__recentUpdateClickBound === "1") {
-      return;
-    }
-    window.__recentUpdateClickBound = "1";
-
-    const openLink = (link) => {
-      const href = link.getAttribute("href");
-      const normalized = normalizeUpdateUrl(href);
-      if (!normalized) {
-        return;
-      }
-      window.location.assign(normalized);
-    };
-
-    document.addEventListener(
-      "click",
-      (event) => {
-        if (event.button !== 0) {
-          return;
-        }
-
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-          return;
-        }
-
-        const clickedNode = event.target.closest(".recent-update-link[href], .recent-update-item[data-update-url]");
-        if (!clickedNode) {
-          return;
-        }
-
-        const link = clickedNode.classList.contains("recent-update-link")
-          ? clickedNode
-          : clickedNode.querySelector(".recent-update-link[href]");
-
-        if (!link || !links.includes(link)) {
-          return;
-        }
-
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        openLink(link);
-      },
-      true
-    );
-
-    links.forEach((link) => {
-      link.addEventListener("keydown", (event) => {
-        if (event.key !== "Enter" && event.key !== " ") {
-          return;
-        }
-        event.preventDefault();
-        openLink(link);
-      });
-    });
-  };
-
   const coverLinks = document.querySelectorAll("[data-book-cover]");
   const lightbox = document.querySelector("[data-book-lightbox]");
   const lightboxImage = lightbox ? lightbox.querySelector(".book-lightbox__image") : null;
@@ -416,7 +452,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  bindRecentUpdateClicks();
+  promoteRecentUpdateAnchors();
+  bindRecentUpdateNativeLinks();
+
   const refreshIntervals = clampAllUpdateLists();
   if (refreshIntervals && refreshIntervals.length > 0) {
     const effectiveRefreshDays = Math.min(...refreshIntervals);

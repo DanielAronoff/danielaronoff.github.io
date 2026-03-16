@@ -15,6 +15,94 @@
       {{ content }}
     </main>
     {% include site-footer.html %}
+    <script>
+      (function () {
+        const bindRecentUpdateNativeLinks = () => {
+          const links = document.querySelectorAll("a.recent-update-link[href], a.recent-update-item-link[href]");
+          if (!window.__recentUpdateClickBound) {
+            window.__recentUpdateClickBound = "1";
+          }
+
+          if (!links.length) {
+            return;
+          }
+
+          const shouldIgnoreAux = (event) => {
+            if (!event) {
+              return false;
+            }
+
+            if (event.button !== undefined && event.button !== 0) {
+              return true;
+            }
+
+            return !!(event.ctrlKey || event.metaKey || event.shiftKey || event.altKey);
+          };
+
+          const normalizeUrl = (value) => {
+            if (!value) {
+              return "";
+            }
+
+            try {
+              return new URL(value, window.location.origin).toString();
+            } catch {
+              return String(value).trim();
+            }
+          };
+
+          links.forEach((link) => {
+            link.classList.remove("recent-update-link");
+            link.classList.add("recent-update-item-link");
+
+            if (link.dataset.recentUpdateNavigationBound === "1") {
+              return;
+            }
+
+            link.dataset.recentUpdateNavigationBound = "1";
+            let isNavigating = false;
+
+            const navigate = (event) => {
+              if (isNavigating || shouldIgnoreAux(event)) {
+                return;
+              }
+
+              const href = normalizeUrl(link.getAttribute("href"));
+              if (!href) {
+                return;
+              }
+
+              isNavigating = true;
+
+              if (event) {
+                event.preventDefault();
+                if (event.stopImmediatePropagation) {
+                  event.stopImmediatePropagation();
+                }
+                event.stopPropagation();
+              }
+
+              window.location.href = href;
+            };
+
+            link.addEventListener("mousedown", navigate, { capture: true });
+            link.addEventListener("click", navigate, { capture: true });
+            link.addEventListener("keydown", (event) => {
+              if (event.key !== "Enter" && event.key !== " ") {
+                return;
+              }
+              navigate(event);
+            });
+          });
+        };
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", bindRecentUpdateNativeLinks, { once: true });
+        } else {
+          bindRecentUpdateNativeLinks();
+        }
+      })();
+    </script>
     <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ asset_version }}" defer></script>
   </body>
 </html>

@@ -212,7 +212,8 @@
   pointer-events: none;
 }
 
-.recent-update-link {
+.recent-update-link,
+.recent-update-item-link {
   display: block;
   width: 100%;
   padding: 0;
@@ -227,7 +228,9 @@
 }
 
 .recent-update-link:hover,
-.recent-update-link:focus-visible {
+.recent-update-link:focus-visible,
+.recent-update-item-link:hover,
+.recent-update-item-link:focus-visible {
   text-decoration: underline;
 }
 
