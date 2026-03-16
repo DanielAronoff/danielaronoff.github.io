@@ -4,6 +4,12 @@
   date_label: "Oct. 2025"
   event: "MIT-ILP conference, Securing the Future: AI-Driven Post-Quantum Data Privacy"
   video_url: https://www.youtube.com/watch?v=sTfhVHjRqLA
+- title: "Macro Musings podcast: Neha Narula, Anders Brownworth, and Daniel Aronoff on Understanding Stablecoins in the GENIUS Era"
+  date: "2026-03-16"
+  date_key: 20260316
+  date_label: "Mar. 2026"
+  event: "Macro Musings podcast"
+  video_url: https://www.mercatus.org/macro-musings/neha-narula-anders-brownworth-and-daniel-aronoff-understanding-stablecoins-genius-era
 - title: "SoK: Fully-Homomorphic Encryption in Smart Contracts"
   date: "2026-03-06"
   date_key: 20260306

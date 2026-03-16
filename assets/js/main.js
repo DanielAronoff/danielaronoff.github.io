@@ -309,55 +309,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const bindRecentUpdateClicks = () => {
     const links = Array.from(document.querySelectorAll(".recent-update-link[href]"));
-    if (!links.length) {
+    if (!links.length || window.__recentUpdateClickBound === "1") {
       return;
     }
+    window.__recentUpdateClickBound = "1";
 
-    const navigateByHref = (link) => {
+    const openLink = (link) => {
       const href = link.getAttribute("href");
-      if (!href) {
+      const normalized = normalizeUpdateUrl(href);
+      if (!normalized) {
         return;
       }
-
-      if (link.dataset.recentUpdateNavigationLocked) {
-        return;
-      }
-
-      link.dataset.recentUpdateNavigationLocked = "1";
-      window.location.assign(href);
+      window.location.assign(normalized);
     };
 
-    const isPlainActivation = (event) => {
-      if ((event.type === "mousedown" || event.type === "pointerup") && typeof event.button === "number" && event.button !== 0) {
-        return false;
-      }
+    document.addEventListener(
+      "click",
+      (event) => {
+        if (event.button !== 0) {
+          return;
+        }
 
-      if (event.type === "keydown") {
-        return event.key === "Enter" || event.key === " ";
-      }
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
 
-      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
-        return false;
-      }
+        const clickedNode = event.target.closest(".recent-update-link[href], .recent-update-item[data-update-url]");
+        if (!clickedNode) {
+          return;
+        }
 
-      return true;
-    };
+        const link = clickedNode.classList.contains("recent-update-link")
+          ? clickedNode
+          : clickedNode.querySelector(".recent-update-link[href]");
 
-    const activate = (event) => {
-      const link = event.currentTarget;
-      if (!isPlainActivation(event)) {
-        return;
-      }
+        if (!link || !links.includes(link)) {
+          return;
+        }
 
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      navigateByHref(link);
-    };
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        openLink(link);
+      },
+      true
+    );
 
     links.forEach((link) => {
-      link.addEventListener("pointerup", activate, true);
-      link.addEventListener("click", activate, true);
-      link.addEventListener("keydown", activate, false);
+      link.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") {
+          return;
+        }
+        event.preventDefault();
+        openLink(link);
+      });
     });
   };
 
