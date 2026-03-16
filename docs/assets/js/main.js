@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       link.dataset.recentUpdateNavigationBound = "1";
+      let isNavigating = false;
 
       const normalizeUrl = (value) => {
         if (!value) {
@@ -103,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return !!(event.ctrlKey || event.metaKey || event.shiftKey || event.altKey);
       };
 
-      let isNavigating = false;
       const navigate = (event) => {
         if (isNavigating || shouldIgnoreAux(event)) {
           return;
