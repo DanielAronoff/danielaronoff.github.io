@@ -1,0 +1,406 @@
+% --- LaTeX CV Template - S. Venkatraman ---
+
+% --- Set document class and font size ---
+
+\documentclass[letterpaper, 11pt]{article}
+
+% --- Package imports ---
+
+\usepackage{hyperref, enumitem, longtable, amsmath, array}
+
+% --- Page layout settings ---
+
+% Set page margins
+\usepackage[left=0.7in, right=0.8in, bottom=.8in, top=0.8in, headsep=0in, footskip=.2in]{geometry}
+
+% Set line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+% --- Page formatting settings ---
+
+% Set link colors
+\usepackage[dvipsnames]{xcolor}
+\hypersetup{colorlinks=true, linkcolor=MidnightBlue, urlcolor=MidnightBlue}
+
+% Set font to Libertine, including math support
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+% Remove page numbering
+\pagenumbering{gobble}
+
+% Define font size and color for section headings
+\newcommand{\headingfont}{\Large\color{OliveGreen}}
+
+% --- CV section settings ---
+
+% Note: each section of this table (Education, Awards, Publications etc.) is 
+% stored in a two-column table. The left-hand column is narrow (1 inch) and is 
+% meant to store dates. The right-hand column is wide (5.2 inches) and stores 
+% the main text.  Sections in which each entry might have multiple lines 
+% (e.g., Education) are stored in a 'SectionTable' environment). Sections in 
+% which each entry might just have one line are stored in a 'SectionTableSingleSpace'
+% environment. The only difference between the two environments is the line 
+% spacing between each entry. Both environments take one argument, which is the
+% title of the section. See main document for how these environments are used.
+
+% Define settings for left-hand column in which dates are printed
+\newcolumntype{R}{>{\raggedleft}p{1in}}
+
+% Define 'SectionTable' environment
+\newenvironment{SectionTable}[1]{
+	\renewcommand*{\arraystretch}{1.7}
+	\setlength{\tabcolsep}{10pt}
+	\begin{longtable}{Rp{5.2in}} & #1 \\}
+{\end{longtable}\vspace{-.3cm}}
+
+% Define 'SectionTableSingleSpace' environment
+\newenvironment{SectionTableSingleSpace}[1]{
+	\renewcommand*{\arraystretch}{1.2}
+	\setlength{\tabcolsep}{10pt}
+	\begin{longtable}{Rp{5.2in}} & #1 \\[0.6em]}
+{\end{longtable}\vspace{-.3cm}}
+
+% --- Document starts here ---
+
+\begin{document}
+
+% --- Name and contact information ---
+
+\begin{SectionTable}{\Huge Daniel Aronoff} & 
+daronoff@mit.edu \newline
+{\small{\url{https://danieljaronoff.io}} \newline
+(248)840-1476 \newline
+Citizenship: USA
+\end{SectionTable}
+
+% --- Section: Research interests ---
+
+\begin{SectionTable}{\headingfont Research interests}
+& Industrial Organization, Digital currencies, Smart contracts, Blockchain protocols, Financial markets and Machine learning
+\end{SectionTable}
+
+% --- Section: Education ---
+
+\begin{SectionTable}{\headingfont Education}
+2017 - 2022 & 
+\textbf{Massachusetts Institute of Technology} -- Cambridge, MA \newline
+Ph.D. in Economics \newline 
+Thesis Advisors: Professors Nikhil Agarwal, Glenn Ellison and Robert Townsend \newline
+Doctorate awarded September 2022\\
+
+&
+\textbf{London School of Economics and Political Science} -- London, UK \newline
+B.Sc. Econ in Philosophy and Economics \newline 
+Tutors: Professors Peter Urbach (Philosphy) and  John Sutton (Economics) \newline
+Graduated with \textit{First Class Honours} \\
+
+&
+\textbf{University of Michigan} -- Ann Arbor, MI \newline
+Studied Russian Intellectual History\newline 
+Mentor: Professor Arthur Mendel \\
+
+% --- Un-comment the next few lines if you want to include some courses you've taken ---
+
+%& \textbf{Selected coursework}
+%\begin{itemize}[itemsep=0pt, leftmargin=*]
+%\item \textit{Statistics}: Asymptotic statistics, Mathematical statistics, Functional data analysis, High-dimensional statistics, Information theory
+%\item \textit{Mathematics}: Measure theory, Functional analysis, Measure-theoretic probability with martingales
+%\end{itemize}
+
+\end{SectionTable}
+
+% --- Section: Awards, scholarships, etc ---
+
+\begin{SectionTableSingleSpace}{\headingfont Honors and academic appointments}
+
+2022 - 2024 &
+
+Research Scientist, MIT Media Lab @ Digital Currency Initiative\\
+
+
+2023 &
+
+Program Committee \textit{Cryptoeconomic Systems Conference (CES Spring 2024)} at MIT\\
+
+
+2022 &
+Program Committee \textit{4th Conference on  Advances in Financial Technology (AFT 2022)}, MIT\\
+
+2019 - 2022 & 
+MIT Media Lab Digital Currency Initiative Collaborator\newline \\
+
+2021 &
+
+Co- Principal Investigator (with Isaac Ardis), Ethereum Classic Labs Game Theoretic Security Study \\
+
+2021 &
+
+Referee/reviewer \textit{Crypoteconomics Journal}. MIT Press\\
+
+\end{SectionTableSingleSpace}
+
+
+
+% --- Section: Publications ---
+
+\begin{SectionTable}{\headingfont Publications and Working Papers} 
+
+2000- Present & 
+\textbf{Over 100 Published Letters to the Editor, The Financial Times Newspaper} \newline
+Daniel Aronoff \\
+
+2024 &
+\textbf{A Trading Mechanism for the Repo Market} \newline
+Daniel Aronoff and Robert Townsend \newline
+\textit{Working paper MIT}\\
+
+2024 &
+\textbf{Targeted Nakamoto:A Proof-of-Work Protocol Augmentation to Improve Security and Limit Energy Consumption} \newline
+Daniel Aronoff \newline
+\textit{Working Paper MIT}\\
+
+2024 & 
+\textbf{\textit{ADESS}: A Proof of Work Protocol Modification to Deter Double-Spend Attacks} \newline
+Daniel Aronoff and Isaac Ardis \newline
+\textit{Accepted for presentation at Future of Information and Communications Conference, Berlin Germany April 2024} (FICC2024)\newline
+Accepted for publication in Springer series \textbf{Advances in Intelligent Systems and Computing}\newline
+{\small{\url{https://arxiv.org/abs/2309.14551}}}\\
+
+2023 &
+\textbf{Conservation Priorities and Environmental Offsets: Markets for Florida Wetlands} \newline
+Daniel Aronoff and Will Rafey \newline
+{\small{\url{https://www.nber.org/papers/w31495}}}\newline  
+\textit{American Economic Review} revise and resubmit\\
+
+2023 &
+\textbf{DeFi for the Securites Industry}\newline
+Daniel Aronoff\newline
+\textit{Finadium Research Report}, April 2023\\
+
+
+2022 &
+\textbf{Bank Stablecoins vs. Central Bank Digital Currencies for Capital Markets}\newline
+Daniel Aronoff and Josh Galper\newline
+\textit{Finadium Research Report}, October 2022\\
+
+2022 &
+\textbf{Essays on Incentive Designs to Improve Market Performance}\newline
+Daniel Aronoff\newline
+\textit{Doctoral Dissertation, MIT}\newline {\small{\url{https://dspace.mit.edu/handle/1721.1/147218}}}\\
+
+2022 &
+\textbf{A Smart Contract for the US Treasury Market}\newline
+Daniel Aronoff and Robert Townsend\newline
+\textit{Working paper, MIT}\\
+
+2022 & 
+\textbf{Coordination Problems, Leverage Constraints and Smart Contract Solutions for the Repo Market} \newline
+Daniel Aronoff and Robert Townsend \newline
+\textit{Working paper, MIT} \\
+
+2022 & 
+\textbf{NP+BRC: A Proof-of-Work Protocol Modification to Reduce Bitcoin Energy Consumption} \newline
+Daniel Aronoff \newline
+\textit{Working Paper, MIT} \\
+
+2020 & 
+\textbf{Double-Spend Counterattacks: Threat of Retaliation in Proof-of-Work Systems} \newline
+Daniel Moroz, Daniel Aronoff, Neha Narula and David Parkes \newline
+\textit{ArXiv}\newline
+{\small{\url{https://arxiv.org/abs/2002.10736}}}\\
+
+2019 & 
+\textbf{Binance Bets the Farm} \newline
+Daniel Aronoff \newline
+\textit{Medium}\newline
+{\small{{\url{https://medium.com/coinmonks/binance-bets-the-house-9a2d1a46af60 }}}}\\
+
+2016 & 
+Book\newline
+\textbf{The Financial Crisis Reconsidered: The Mercantilist Origin of Secular Stagnation and Boom-Bust Cycles} \newline
+Daniel Aronoff. \newline
+\textit{Springer/Palgrave-Macmillan}\newline
+{\small{\url{https://link.springer.com/book/10.1007/978-1-137-54789-7 }}}\newline\\
+
+2015 & 
+Book\newline
+\textbf{A Theorey of Accumulation and Secular Stagnation: A Malthusian Approach to Understanding a Contemporary Malaise} \newline
+Daniel Aronoff. \newline
+\textit{Springer/Palgrave-Macmillan}\newline {\small{\url{https://link.springer.com/book/10.1057/9781137562210}}}\\
+
+\end{SectionTable}
+
+% --- Section: Research experience ---
+
+\begin{SectionTable}{\headingfont Research experience}
+1989 - 1990 &
+RA for the book \textbf{Sunk Cost and Market Structure: Price Competition, Advertising and the Evolution of Concentration}\newline
+by John Sutton. Published by MIT Press. \newline
+\url{https://mitpress.mit.edu/books/sunk-costs-and-market-structure} \\
+
+\end{SectionTable}
+
+% --- Section: Teaching experience ---
+
+\begin{SectionTable}{\headingfont Teaching and study group experience}
+
+Fall term 2022 -  &
+Digital Finance Working Group\newline
+Weekly research meeting of MIT Econ PhD students, MIT Media Lab Digital Currency Initiative  computer scientists and Federal Reserve economists\newline
+Position: Co- creator and organizer with Prof. Robert M. Townsend\\
+
+
+Fall term 2021 - Spring term 2022 &
+Central Bank Digital Currency Reading Group\newline
+Bi-weekly research meeting of MIT Econ PhD students, MIT Media Lab Digital Currency Initiative  computer scientists and Federal Reserve economists\newline
+Position: Creator and organizer\\
+
+
+Fall 2018 & 
+\textbf{Teaching assistant, The Challenge of World Poverty. MIT 14.73 } \newline
+Professors David Atkin and Esther Duflo\\
+
+\end{SectionTable}
+
+% --- Section: Industry experience ---
+
+\begin{SectionTable}{\headingfont Industry experience}
+
+April 2022 - Present &
+
+\textbf{RCM Labs} Digital Currency Advisor\\
+
+1994 - 2014 &
+\textbf{Landon Companies} President \newline
+Real estate investment and development in industrial, retail and residential. Environmental markets in wetland and endangered species offset credits \\
+\end{SectionTable}
+
+% --- Section: Talks and tutorials ---
+
+
+\begin{SectionTable}{\headingfont Talks and tutorials}
+
+February 2024 &
+\textbf{Conservation Priorities and Environmental Offsets: Markets for Florida Wetlands} \newline
+Daniel Aronoff and Will Rafey \newline
+\textit{National Bureau of Economic Research Industrial Organization Program Meeting}\newline
+Stanford University\newline
+Will Rafey presenter\newline
+{\small{\url{https://www.youtube.com/live/F-IycsWOZ_o?si=nPrxvEH0fY6sCda5}}}\\
+
+November 2023 &
+\textbf{Fintech Innovation: The Nexus of Technology and Policy}\newline
+MIT Research and Development Conference\newline
+Daniel Aronoff and Ed Golding Discussants\newline
+{https://ilp.mit.edu/watch/1115-1623-rd-fintech-innovation}\\
+
+November 2023 &
+\textbf{Repo on chain and collateral mobilization}\newline
+\textit{Finadium: Rates and Repo North America}\newline
+Panel Discussion\newline
+{https://finadium.com/rates-repo-na-2023/repo-on-chain-and-collateral-mobilization/}\\
+
+
+July 2023 &
+\textbf{Conservation Priorities and Environmental Offsets: Markets for Florida Wetlands} \newline
+Daniel Aronoff and Will Rafey \newline
+\textit{National Bureau of Economic Research}\newline
+Will Rafey presenter\newline
+{\small{\url{https://www.nber.org/papers/w31495}}} \\
+
+
+May 2023 &
+
+\textbf{Targeted Nakamoto: A Proof-of-Work Protocol Modification to Improve Security and Limit Energy Consumption}\newline
+Daniel Aronoff \newline
+\textit{Presentation to Chanicode Labs Research Conference}\newline
+{https://research.chaincode.com/research-seminar/}\\
+
+
+September 2022 &
+
+\textbf{Conservation priorities and environmental offsets: Markets for Florida wetlands}\newline
+Daniel Aronoff and Will Rafey \newline
+\textit{Presentation to the MIT Economics Industrial Organization Departmental Workshop} \newline
+Daniel Aronoff presenter\\
+
+May 2022 &
+
+\textbf{A Smart Contract for the US Treasury Market}\newline
+Daniel Aronoff and Robert Townsend \newline
+\textit{Presentation to the MIT Media Lab Digital Currency Initiative and the Federal Reserve Bank of Boston Project Hamilton CBDC Team}\newline
+Daniel Aronoff presenter\\
+
+March 2022 &
+
+\textbf{A Proof of Work Protocol to Reduce Bitcoin Energy Consumption}\newline
+Daniel Aronoff \newline
+\textit{Presentation to the MIT Media Lab Digital Currency Initiative}\\
+
+
+January 2022 &
+Wholesale CBDC and Ledger UST in the Repo Market \newline
+\textit{Finadium Roundtable on CBDC and Repo} \\
+
+May 2021 &
+\textbf{Rethinking Currency: CBDC in the Context of the Current US Monetary System} \newline
+\textit{Rethinking Economics NL Invited Lecture\newline
+\url{https://www.youtube.com/watch?v=wR_amd3xaJ8} } \\
+
+February 2021 &
+\textbf{Coordination Problems, Leverage Constraints and A Smart Contract Implementation for the Repo Market}  \newline
+Daniel Aronoff and Robert Townsend \newline
+\textit{Presentation to the MIT Media Lab Digital Currency Initiative and the Federal Reserve Bank of Boston Project Hamilton CBDC Team}\newline
+Daniel Aronoff presenter\\
+
+
+November 2019 &
+\textbf{Double-Spend Counter-Attacks: Threat of Retaliation in Proof-of-Work Systems} \newline
+Daniel Moroz, Daniel Aronoff, Neha Narula and David Parkes\newline
+\textit{Presentation to the University of Chicago, Becker-Friedman Institute: Cryptocurrencies and Blockchains Conference} \newline
+Daniel Moroz presenter\\
+
+\end{SectionTable}
+
+% --- Section: Professional society memberships ---
+
+\begin{SectionTable}{\headingfont Volunteer positions}
+
+2003 - 2009 &
+Grand Valley State University, Michigan USA \newline
+\textit{Member of the Board of Trustees. Vice-Chairman 2006-2008} \\
+
+2007 - 2010 &
+ Roeper School, Bloomfield Hills MI\newline
+\textit{Memberof the Board of Trustees} \\
+\end{SectionTable}
+
+
+\begin{SectionTable}{\headingfont Technical skills}
+& \textbf{Programming languages} \newline
+Proficient in Python and Lisp (Scratch)\newline
+Familiar with: Julia, Gen (a Julia DSL for Probabilistic Modeling) and Pytorch \\
+
+& \textbf{Software} \newline
+\LaTeX \\
+
+& \textbf{Languages} \newline
+English (fluent - occasionally)
+\end{SectionTable}
+
+% --- Section: Other interests/hobbies ---
+
+\begin{SectionTable}{\headingfont Other interests}
+& My Family, Baseball, Shakespeare, Cross-fit, Coffee, Political Philosophy, Chinese history/culture/politics
+
+\end{SectionTable}
+
+% --- End of CV! ---
+
+\end{document}
+
+
+
+
+

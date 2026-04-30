@@ -1,0 +1,300 @@
+%============================================================
+% Academic CV (Economics / CS) with BibTeX (.bib) publications
+% Uses biblatex + biber (recommended)
+%============================================================
+\documentclass[11pt]{article}
+
+% ---------- Page layout ----------
+\usepackage[margin=1in]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+\usepackage{microtype}
+
+% ---------- Fonts (Times-like, common in econ/CS) ----------
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+
+% ---------- Section formatting ----------
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{1.2ex}{0.6ex}
+
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{0.8ex}{0.2ex}
+
+% ---------- Lists ----------
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*, nosep}
+\setlist[enumerate]{leftmargin=*, nosep}
+
+% ---------- Tables / alignment ----------
+\usepackage{tabularx}
+
+% ---------- Header / footer ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+% ---------- Links ----------
+\usepackage[hidelinks]{hyperref}
+% If you prefer subtle link color instead of hidelinks, replace with:
+% \usepackage{xcolor}
+% \usepackage{hyperref}
+% \hypersetup{colorlinks=true, urlcolor=black, linkcolor=black, citecolor=black}
+
+% ---------- BibLaTeX (reads a BibTeX .bib file) ----------
+\usepackage{etoolbox}
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  sorting=ydnt,
+  maxbibnames=99,
+  giveninits=true,
+  uniquename=init,
+  doi=true,
+  url=true,
+  eprint=true,
+  isbn=false
+]{biblatex}
+\addbibresource{cv.bib}
+
+% ---------- Link buttons (right-aligned) ----------
+\usepackage{xcolor}
+
+\newcommand{\linkbutton}[1]{%
+  \begingroup
+  \setlength{\fboxsep}{2pt}%
+  \setlength{\fboxrule}{0.35pt}%
+  \fcolorbox{black!20}{black!6}{\footnotesize\sffamily #1}%
+  \endgroup
+}
+
+% Field formats (explicit hyperlinks so buttons always click)
+\DeclareFieldFormat{url}{\href{#1}{\linkbutton{Link}}}
+\DeclareFieldFormat{doi}{\href{https://doi.org/#1}{\linkbutton{Link}}}
+\DeclareFieldFormat{eprint:arxiv}{\href{https://arxiv.org/abs/#1}{\linkbutton{Link}}}
+
+% usera holds an open-access PDF link
+\DeclareFieldFormat{usera}{\href{#1}{\linkbutton{PDF}}}
+
+\DeclareFieldFormat{urldate}{}
+
+% Print exactly one primary link (DOI > URL > arXiv), plus optional PDF (usera),
+% all right-aligned.
+\renewbibmacro*{doi+eprint+url}{%
+  \printtext{\hfill\mbox{%
+    \iffieldundef{doi}
+      {\iffieldundef{url}
+        {\iffieldundef{eprint}
+          {}
+          {\printfield[eprint:arxiv]{eprint}}}
+        {\printfield{url}}}
+      {\printfield{doi}}%
+    \iffieldundef{usera}{}{~\printfield{usera}}%
+  }}%
+}
+
+% If arXiv is present, suppress DOI to avoid duplicate link targets
+\AtEveryBibitem{%
+  \ifboolexpr{ test {\iffieldequalstr{eprinttype}{arxiv}} }
+    {\clearfield{doi}}
+    {}%
+}
+
+% ---------- CV-friendly bibliography tweaks ----------
+\DeclareFieldFormat[article,inproceedings,incollection,unpublished,techreport]{title}{#1}
+\renewbibmacro{in:}{}
+\setlength{\bibhang}{1.2em}
+\setlength{\bibitemsep}{0.25\baselineskip}
+\renewcommand*{\bibfont}{\small}
+
+% --- Filters to split publication types ---
+\defbibfilter{journals}{type=article}
+\defbibfilter{theses}{type=thesis}
+\defbibfilter{conferences}{type=inproceedings or type=proceedings}
+\defbibfilter{confchapters}{keyword=confproc}
+\defbibfilter{blogs}{keyword=blogs}
+\defbibfilter{workingpapers}{keyword=workingpapers}
+\defbibfilter{books}{keyword=books}
+\defbibfilter{projects}{keyword=projects}
+\defbibfilter{videos}{keyword=video}
+\defbibfilter{slides}{keyword=slides}
+\defbibfilter{confslides}{keyword=confslides}
+\defbibfilter{industrypubs}{keyword=industrypubs}
+
+% Everything not captured above
+\defbibfilter{other}{%
+  not type=article and
+  not type=inproceedings and
+  not type=proceedings and
+  not type=unpublished and
+  not type=techreport and
+  not type=incollection and
+  not type=thesis and
+  not keyword=books and
+  not keyword=video and
+  not keyword=slides and
+  not keyword=confslides and
+  not keyword=confproc
+}
+
+% If arXiv is present, suppress DOI (avoids duplicate link targets)
+\AtEveryBibitem{%
+  \ifboolexpr{ test {\iffieldequalstr{eprinttype}{arxiv}} }
+    {\clearfield{doi}}
+    {}%
+}
+
+% ---------- CV identity (edit these) ----------
+\newcommand{\CVName}{Daniel Joseph Aronoff}
+\newcommand{\CVTitle}{Curriculum Vitae, Academics}
+\newcommand{\CVAffiliation}{Massachusetts Institute of Technology}
+\newcommand{\CVDepartment}{Research Affiliate, Department of Economics}
+\newcommand{\CVEmail}{\href{mailto:daronoff@mit.edu}{daronoff@mit.edu}}
+\newcommand{\CVWeb}{{}}
+\newcommand{\CVDate}{\today}
+
+% Right header: name + page number (clean academic look)
+\fancyhead[L]{\textsc{\CVName}}
+\fancyhead[R]{\thepage}
+
+% ---------- A simple date-left / content-right entry macro ----------
+\newcommand{\cventry}[2]{%
+  \begin{tabularx}{\linewidth}{@{}p{0.18\linewidth} X@{}}
+    \textbf{#1} & #2
+  \end{tabularx}\par
+}
+
+
+
+
+\begin{document}
+
+% ---------- Top block ----------
+{\LARGE \textbf{\CVName}}\hfill {\CVTitle}\\
+\CVAffiliation \hfill Updated: \CVDate\\
+\CVDepartment \hfill \CVEmail \;\; \CVWeb\\[0.6em]
+
+% ============================================================
+\section*{Academic Appointments}
+\cventry{2024--}{\textbf{Research Affiliate}, Department of Economics, MIT.}
+\cventry{2022--}{Research Associate, The Laboratory for Economic Analysis and Design at MIT.}
+\cventry{2022--2024}{Research Scientist, MIT Media Lab.}
+\cventry{2020--}{Research Collaborator, Digital Currency Initiative, MIT Media Lab.}
+\section*{Education}
+\cventry{2022}{\textbf{Massachusetts Institute of Technology}
+
+Ph.D. in Economics
+
+Advisors: Glenn Ellison, Robert Townsend and Nikhil Agarwal.}
+\cventry{}{\textbf{London School of Economics and Political Science}
+
+B.Sc. in Philosophy and Economics (First Class Honors)
+
+    Tutors: Peter Urbach (Philosophy) and John Sutton (Economics).}
+    
+\cventry{}{\textbf{University of Michigan}
+
+Attended
+
+Studied Russian Intellectual History
+
+Advisor: Arthur Mendel.}
+
+\section*{Research Interests}
+Financial market structure; digital currencies; cryptography; environmental market design.
+
+% ============================================================
+\section*{Publications}
+\nocite{aronoff2024targeted}
+% Print all entries from cv.bib (common for CVs)
+\nocite{*}
+
+% \subsection*{Journal Articles}
+% \printbibliography[filter=journals, heading=none]
+
+\subsection*{Books and Chapters}
+\printbibliography[filter=books, heading=none]
+
+
+\subsection*{Conference Proceedings}
+\printbibliography[filter=conferences, heading=none]
+\printbibliography[filter=confchapters, heading=none]
+\printbibliography[filter=confslides, heading=none]
+
+\subsection*{Industry Publications}
+\printbibliography[filter=industrypubs, heading=none]
+
+
+
+\subsection*{Working Papers / Preprints}
+\printbibliography[filter=workingpapers, heading=none]
+
+
+\subsection*{Thesis}
+\printbibliography[filter=theses, heading=none]
+
+\subsection*{Recorded Talks and Video Presentations}
+\printbibliography[filter=videos, heading=none]
+
+\subsection*{Slide Presentations}
+\printbibliography[filter=slides, heading=none]
+
+\subsection{Blog Posts}
+\printbibliography[filter=blogs, heading=none]
+
+\subsection{Project Sites}
+\printbibliography[filter=projects, heading=none]
+
+
+
+% \subsection*{Other}
+% \printbibliography[filter=other, heading=none]
+
+% ============================================================
+% \section*{Grants}
+% \cventry{2025--2028}{Agency, Award \#XXXXXXX, \emph{Grant Title}. Role (PI/Co-PI). Total: \$X,XXX,XXX.}
+
+% \section*{Teaching}
+% \cventry{MIT, 2024}{Course number: Course title (graduate/undergraduate).}
+% \cventry{MIT, 2023}{Course number: Course title (graduate/undergraduate).}
+
+\section*{Professional Service}
+%\cventry{Editorial}{Associate Editor, \emph{Journal Name}, 2022--.}
+\cventry{Committees}{2022: \textbf{Advances in Financial Technologies (AFT2022)}
+
+Program Committee}
+
+\cventry{Refereeing}{2020 - 2023: \textit{Cryptoeconomic Systems}.}
+\cventry{Academic Boards}{2003 - 2008: \textbf{Grand Valley State University} Grand Rapids, MI.
+
+Board of Trustees. 
+
+2006 -- 2008: Vice-Chair.
+
+2007 - 2010: \textbf{Roeper School} Bloomfield Hills, MI.
+
+Board of Trustees}
+
+
+
+% \section*{Selected Talks}
+% \cventry{2025}{Invited talk, Institution/Conference, Location.}
+% \cventry{2024}{Keynote, Workshop Name, Location.}
+
+% \section*{Advising}
+% \cventry{Ph.D.}{Student Name (chair), year--; Student Name (committee), year--.}
+% \cventry{Postdocs}{Postdoc Name, year--year.}
+
+% \section*{Awards and Honors}
+% \cventry{2025}{Award name, organization.}
+% \cventry{2020}{Best Paper Award, conference.}
+
+\section*{Consulting}
+\cventry{2024--}{Client: SCB$^{X}$. Project: An AI-Driven Post-Quantum Cryptographically Secure Workflow for Collaborative Credit Scoring.}
+
+\section*{References}
+Available upon request.
+
+\end{document}
