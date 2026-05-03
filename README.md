@@ -61,23 +61,9 @@ After replacing it, review:
 - [`_pages/cv.md`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_pages/cv.md)
 - [`_data/cv_links.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/cv_links.yml)
 
-## Syncing CV-linked assets
+## CV-linked assets
 
-The source of truth for the structured CV links is [`_data/cv_links.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/cv_links.yml).
-
-To import locally stored CV-linked PDFs from the separate asset repo into `assets/cv/linked/`, run:
-
-```bash
-python3 scripts/sync_cv_assets.py
-```
-
-Optional flags:
-
-```bash
-python3 scripts/sync_cv_assets.py --source /path/to/daronoff-cv-assets --dry-run
-```
-
-The script does not delete existing files. It only copies or updates assets referenced by `source_file` entries in [`_data/cv_links.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/cv_links.yml).
+The source of truth for the structured CV links is [`_data/cv_links.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_data/cv_links.yml). Linked PDFs live in [`assets/cv/linked/`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/assets/cv/linked) — drop new files there and reference them as `/assets/cv/linked/<filename>.pdf`.
 
 ## Importing FT letters
 

@@ -21,7 +21,7 @@
       asset_target: "/assets/cv/linked/550889_1_En_11_Chapter_Author.pdf"
       links:
         - label: "PDF"
-          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/550889%5F1%5FEn%5F11%5FChapter%5FAuthor.pdf"
+          url: "/assets/cv/linked/550889_1_En_11_Chapter_Author.pdf"
         - label: "DOI"
           url: "https://doi.org/10.1007/978-3-031-53963-3_11"
     - title: "A Theory of Accumulation and Secular Stagnation"
@@ -38,11 +38,11 @@
   items:
     - title: "Mechanism Design for Hashrate Externalities: Implementing Optimal Security in Proof-of-Work"
       note: "Unpublished MIT manuscript."
-      source_file: "Aronoff_Mech_Design_Submital(2).pdf"
-      asset_target: "/assets/cv/linked/Aronoff_Mech_Design_Submital(2).pdf"
+      source_file: "Aronoff_Targeted_Mech_Design.pdf"
+      asset_target: "/assets/cv/linked/Aronoff_Targeted_Mech_Design.pdf"
       links:
         - label: "Manuscript"
-          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/Aronoff_Mech_Design_Submital(2).pdf"
+          url: "/assets/cv/linked/Aronoff_Targeted_Mech_Design.pdf"
     - title: "SoK: Fully-homomorphic encryption in smart contracts"
       date: "2026-03-06"
       date_key: 20260306
@@ -60,6 +60,14 @@
       links:
         - label: "arXiv"
           url: "https://arxiv.org/abs/2505.22940"
+    - title: "NetWrap: A Deficiency-Resilient Protocol for Multilateral Netting with Preserved Bilateral Exposures"
+      date: "2026-04-29"
+      date_key: 20260429
+      date_label: "Apr. 2026"
+      note: "Unpublished manuscript."
+      links:
+        - label: "Manuscript"
+          url: "/assets/cv/linked/NetWrap_Paper.pdf"
     - title: "TradeMech: Multilateral Netting Without Altering Counterparty Risk"
       date: "2025-12-01"
       date_key: 20251201
@@ -129,7 +137,7 @@
       asset_target: "/assets/cv/linked/Cryptography_Slidedeck_11_2024.pdf"
       links:
         - label: "Slides"
-          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/Cryptography_Slidedeck_11_2024.pdf"
+          url: "/assets/cv/linked/Cryptography_Slidedeck_11_2024.pdf"
     - title: "ADESS: A Proof-of-Work Protocol to Deter Double-Spend Attacks"
       date: "2024-02-07"
       date_key: 20240207
@@ -140,7 +148,7 @@
       asset_target: "/assets/cv/linked/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
       links:
         - label: "Slides"
-          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
+          url: "/assets/cv/linked/ADESS_Slidedeck_FICC24_2.7.2024.pdf"
         - label: "Video"
           url: "https://www.dci.mit.edu/projects/adess-a-proof-of-work-blockchain-protocol-modification-to-deter-double-spend-attacks"
     - title: "A Causal Inference Algorithm for Heterogeneous Treatment Effects"
@@ -153,7 +161,7 @@
       asset_target: "/assets/cv/linked/Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
       links:
         - label: "Slides"
-          url: "https://raw.githubusercontent.com/DanielAronoff/daronoff-cv-assets/main/Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
+          url: "/assets/cv/linked/Aronoff_MIT_Metrics_Lunch_10.14.2021.pdf"
 - category: "Thesis"
   items:
     - title: "Essays on Incentive Designs to Improve Market Performance"
