@@ -11,6 +11,12 @@
     Workflow for Collaborative Credit Scoring" (Cryptology ePrint Archive,
     May 2026).
   url: /assets/cv/linked/AI_Post-Q_credit_Score_5.2026.pdf
+- date: 2026-05-03
+  caption: >-
+    TradeMech: A Method to Multilaterally Net Trades Without Altering
+    Counterparty Exposure by Daniel Aronoff, Robert M. Townsend, and Madars
+    Virza (arXiv: 2605.15210).
+  url: https://arxiv.org/abs/2605.15210
 - date: 2026-04-30
   caption: >-
     "Conservation Priorities and Environmental Offsets: Markets for Florida Wetlands"
@@ -47,9 +53,3 @@
     SoK: Fully-homomorphic encryption in smart contracts
     (Cryptology ePrint Archive)
   url: https://eprint.iacr.org/2025/527
-- date: 2026-05-03
-  caption: >-
-    TradeMech: A Method to Multilaterally Net Trades Without Altering
-    Counterparty Exposure by Daniel Aronoff, Robert M. Townsend, and Madars
-    Virza (arXiv: 2605.15210).
-  url: https://arxiv.org/abs/2605.15210
