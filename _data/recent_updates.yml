@@ -47,7 +47,9 @@
     SoK: Fully-homomorphic encryption in smart contracts
     (Cryptology ePrint Archive)
   url: https://eprint.iacr.org/2025/527
-- date: 2025-05-01
+- date: 2026-05-03
   caption: >-
-    A Smart-Contract to Resolve Multiple Equilibrium in an Intermediated Trade
-  url: https://arxiv.org/abs/2505.22940
+    TradeMech: A Method to Multilaterally Net Trades Without Altering
+    Counterparty Exposure by Daniel Aronoff, Robert M. Townsend, and Madars
+    Virza (arXiv: 2605.15210).
+  url: https://arxiv.org/abs/2605.15210
