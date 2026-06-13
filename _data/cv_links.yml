@@ -63,14 +63,6 @@
           url: "https://arxiv.org/abs/2605.15210"
         - label: "PDF"
           url: "https://arxiv.org/pdf/2605.15210"
-    - title: "NetWrap: A Deficiency-Resilient Protocol for Multilateral Netting with Preserved Bilateral Exposures"
-      date: "2026-04-29"
-      date_key: 20260429
-      date_label: "Apr. 2026"
-      note: "Unpublished manuscript."
-      links:
-        - label: "Manuscript"
-          url: "/assets/cv/linked/NetWrap_Paper.pdf"
     - title: "RepoMech: A Method to Reduce the Balance-Sheet Impact of Repo Intermediation"
       date: "2025-12-01"
       date_key: 20251201
