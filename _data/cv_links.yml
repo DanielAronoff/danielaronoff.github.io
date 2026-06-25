@@ -13,6 +13,10 @@
           url: "/assets/cv/linked/aronoff-rafey-2026-conservation-priorities.pdf"
         - label: "NBER"
           url: "https://doi.org/10.3386/w31495"
+        - label: "Replication Package"
+          url: "https://doi.org/10.3886/E240508V1"
+        - label: "Supplemental Appendix"
+          url: "https://www.aeaweb.org/articles/materials/25088"
 - category: "Books and chapters"
   items:
     - title: "ADESS: A Proof-of-Work Protocol to Deter Double-Spend Attacks"

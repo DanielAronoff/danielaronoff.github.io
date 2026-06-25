@@ -78,10 +78,14 @@
 % usera holds an open-access PDF link
 \DeclareFieldFormat{usera}{\href{#1}{\linkbutton{PDF}}}
 
+% userb / userc hold supplemental materials (replication package, appendix)
+\DeclareFieldFormat{userb}{\href{#1}{\linkbutton{Replication Package}}}
+\DeclareFieldFormat{userc}{\href{#1}{\linkbutton{Supplemental Appendix}}}
+
 \DeclareFieldFormat{urldate}{}
 
-% Print exactly one primary link (DOI > URL > arXiv), plus optional PDF (usera),
-% all right-aligned.
+% Print exactly one primary link (DOI > URL > arXiv), plus optional PDF (usera)
+% and supplemental materials (userb, userc), all right-aligned.
 \renewbibmacro*{doi+eprint+url}{%
   \printtext{\hfill\mbox{%
     \iffieldundef{doi}
@@ -92,6 +96,8 @@
         {\printfield{url}}}
       {\printfield{doi}}%
     \iffieldundef{usera}{}{~\printfield{usera}}%
+    \iffieldundef{userb}{}{~\printfield{userb}}%
+    \iffieldundef{userc}{}{~\printfield{userc}}%
   }}%
 }
 
