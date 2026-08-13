@@ -53,29 +53,84 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": {{ site.title | jsonify }},
-  "url": {{ canonical_url | jsonify }},
-  "inLanguage": "en-US",
-  "author": {
-    "@type": "Person",
-    "name": "{{ site.author.name }}",
-    "alternateName": [
-      "Daniel Aronoff",
-      "Dan Aronoff",
-      "Daniel J. Aronoff",
-      "Dan J. Aronoff"
-    ],
-    "jobTitle": "Economist",
-    "affiliation": {
-      "@type": "Organization",
-      "name": "Massachusetts Institute of Technology",
-      "url": "https://www.mit.edu"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ seo_base_url }}/#person",
+      "name": {{ site.author.name | jsonify }},
+      "alternateName": [
+        "Daniel Aronoff",
+        "Dan Aronoff",
+        "Daniel J. Aronoff",
+        "Dan J. Aronoff"
+      ],
+      "url": "{{ seo_base_url }}/",
+      "image": {{ seo_image | jsonify }},
+      "email": "mailto:{{ site.author.email }}",
+      "jobTitle": "Research Affiliate, Department of Economics",
+      "description": {{ site.description | jsonify }},
+      "knowsAbout": [
+        "Market design",
+        "Financial market microstructure",
+        "Cryptographic finance",
+        "Digital currencies",
+        "Stablecoins",
+        "Environmental market design"
+      ],
+      "affiliation": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Massachusetts Institute of Technology",
+          "url": "https://www.mit.edu"
+        },
+        {
+          "@type": "Organization",
+          "name": "MIT Department of Economics",
+          "url": "https://economics.mit.edu"
+        },
+        {
+          "@type": "Organization",
+          "name": "Laboratory for Economic Analysis and Design at MIT",
+          "url": "https://www.leadmit.com"
+        },
+        {
+          "@type": "Organization",
+          "name": "MIT Media Lab Digital Currency Initiative",
+          "url": "https://www.dci.mit.edu"
+        }
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "London School of Economics",
+          "url": "https://www.lse.ac.uk"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Massachusetts Institute of Technology",
+          "url": "https://www.mit.edu"
+        }
+      ]{% if site.author.same_as %},
+      "sameAs": {{ site.author.same_as | jsonify }}{% endif %}
     },
-    "sameAs": [
-      "https://www.linkedin.com/in/daniel-aronoff-968a19b0/"
-    ],
-    "email": "mailto:daronoff@mit.edu"
-  }
+    {
+      "@type": "WebSite",
+      "@id": "{{ seo_base_url }}/#website",
+      "name": {{ site.title | jsonify }},
+      "url": "{{ seo_base_url }}/",
+      "inLanguage": "en-US",
+      "author": { "@id": "{{ seo_base_url }}/#person" },
+      "publisher": { "@id": "{{ seo_base_url }}/#person" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": {{ canonical_url | jsonify }},
+      "url": {{ canonical_url | jsonify }},
+      "name": {{ page_title | jsonify }},
+      "isPartOf": { "@id": "{{ seo_base_url }}/#website" },
+      "about": { "@id": "{{ seo_base_url }}/#person" },
+      "primaryImageOfPage": {{ seo_image | jsonify }}
+    }
+  ]
 }
 </script>
