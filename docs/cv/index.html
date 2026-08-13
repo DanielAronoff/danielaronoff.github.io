@@ -45,35 +45,90 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Daniel Joseph Aronoff: Academic Website",
-  "url": "https://danielaronoff.github.io/cv/",
-  "inLanguage": "en-US",
-  "author": {
-    "@type": "Person",
-    "name": "Daniel Joseph Aronoff",
-    "alternateName": [
-      "Daniel Aronoff",
-      "Dan Aronoff",
-      "Daniel J. Aronoff",
-      "Dan J. Aronoff"
-    ],
-    "jobTitle": "Economist",
-    "affiliation": {
-      "@type": "Organization",
-      "name": "Massachusetts Institute of Technology",
-      "url": "https://www.mit.edu"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://danielaronoff.github.io/#person",
+      "name": "Daniel Joseph Aronoff",
+      "alternateName": [
+        "Daniel Aronoff",
+        "Dan Aronoff",
+        "Daniel J. Aronoff",
+        "Dan J. Aronoff"
+      ],
+      "url": "https://danielaronoff.github.io/",
+      "image": "https://danielaronoff.github.io/assets/img/daniel-joseph-aronoff-portrait.jpeg",
+      "email": "mailto:daronoff@mit.edu",
+      "jobTitle": "Research Affiliate, Department of Economics",
+      "description": "Daniel Joseph Aronoff (Dan J. Aronoff, Dan Aronoff) is an economist at MIT working at the intersection of market design, cryptography, and digital currencies.",
+      "knowsAbout": [
+        "Market design",
+        "Financial market microstructure",
+        "Cryptographic finance",
+        "Digital currencies",
+        "Stablecoins",
+        "Environmental market design"
+      ],
+      "affiliation": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Massachusetts Institute of Technology",
+          "url": "https://www.mit.edu"
+        },
+        {
+          "@type": "Organization",
+          "name": "MIT Department of Economics",
+          "url": "https://economics.mit.edu"
+        },
+        {
+          "@type": "Organization",
+          "name": "Laboratory for Economic Analysis and Design at MIT",
+          "url": "https://www.leadmit.com"
+        },
+        {
+          "@type": "Organization",
+          "name": "MIT Media Lab Digital Currency Initiative",
+          "url": "https://www.dci.mit.edu"
+        }
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "London School of Economics",
+          "url": "https://www.lse.ac.uk"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Massachusetts Institute of Technology",
+          "url": "https://www.mit.edu"
+        }
+      ],
+      "sameAs": ["https://www.linkedin.com/in/daniel-aronoff-968a19b0/","https://dspace.mit.edu/handle/1721.1/147218","https://orcid.org/0000-0002-7516-4611"]
     },
-    "sameAs": [
-      "https://www.linkedin.com/in/daniel-aronoff-968a19b0/"
-    ],
-    "email": "mailto:daronoff@mit.edu"
-  }
+    {
+      "@type": "WebSite",
+      "@id": "https://danielaronoff.github.io/#website",
+      "name": "Daniel Joseph Aronoff: Academic Website",
+      "url": "https://danielaronoff.github.io/",
+      "inLanguage": "en-US",
+      "author": { "@id": "https://danielaronoff.github.io/#person" },
+      "publisher": { "@id": "https://danielaronoff.github.io/#person" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://danielaronoff.github.io/cv/",
+      "url": "https://danielaronoff.github.io/cv/",
+      "name": "Curriculum Vitae | Daniel Joseph Aronoff: Academic Website",
+      "isPartOf": { "@id": "https://danielaronoff.github.io/#website" },
+      "about": { "@id": "https://danielaronoff.github.io/#person" },
+      "primaryImageOfPage": "https://danielaronoff.github.io/assets/img/daniel-joseph-aronoff-portrait.jpeg"
+    }
+  ]
 }
 </script>
 
     <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
-    <link rel="stylesheet" href="/assets/css/main.css?v=20260714154307">
+    <link rel="stylesheet" href="/assets/css/main.css?v=20260813194638">
   </head>
   <body class="page-curriculum-vitae">
     <a class="skip-link" href="#content">Skip to content</a>
@@ -655,6 +710,6 @@
         }
       })();
     </script>
-    <script src="/assets/js/main.js?v=20260714154307" defer></script>
+    <script src="/assets/js/main.js?v=20260813194638" defer></script>
   </body>
 </html>
