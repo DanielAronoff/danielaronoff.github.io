@@ -5,7 +5,7 @@
   {% assign page_title = page.title | append: ' | ' | append: site.title %}
 {% endif %}
 {% assign page_description = page.description | default: site.description %}
-{% assign page_image = page.image | default: site.image | default: '/assets/img/daniel-joseph-aronoff-portrait.jpeg' %}
+{% assign page_image = page.image | default: site.image | default: '/assets/img/daniel-aronoff-portrait.jpeg' %}
 {% assign seo_base_url = site.seo_base_url %}
 {% if seo_base_url == nil %}
   {% assign seo_base_url = '' %}
@@ -19,7 +19,7 @@
   {% assign seo_image = page_image %}
 {% endif %}
 {% assign profile_url = site.author.same_as | first %}
-{% capture keywords %}Daniel Joseph Aronoff, Daniel Aronoff, Dan Aronoff, Dan J Aronoff, Daniel J. Aronoff, Daniel Aronoff MIT, MIT economist, market design, cryptography, digital currencies, blockchain economics{% endcapture %}
+{% capture keywords %}Daniel Aronoff, Dan Aronoff, Dan J Aronoff, Daniel J. Aronoff, Daniel Aronoff MIT, MIT economist, market design, cryptography, digital currencies, blockchain economics{% endcapture %}
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

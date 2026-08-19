@@ -5,7 +5,7 @@ nav: true
 nav_title: Talks
 nav_order: 5
 permalink: /talks/
-description: Selected talks, recorded presentations, and related slide decks by Daniel Joseph Aronoff.
+description: Selected talks, recorded presentations, and related slide decks by Daniel Aronoff.
 lede: Selected recorded talks, with related slide decks surfaced from the CV where relevant.
 ---
 <div class="page-stack">

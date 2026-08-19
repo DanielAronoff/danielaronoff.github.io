@@ -5,16 +5,16 @@ nav: true
 nav_title: CV
 nav_order: 3
 permalink: /cv/
-description: Download Daniel Joseph Aronoff's CV and browse linked papers, talks, slides, and project materials.
+description: Download Daniel Aronoff's CV and browse linked papers, talks, slides, and project materials.
 lede: Download the current CV and browse the linked materials surfaced from it in structured form.
 ---
 <div class="page-stack">
 <section class="cv-panel">
     <div class="cv-actions">
-      <a class="button-link" href="{{ '/assets/cv/daniel-joseph-aronoff-cv.pdf' | relative_url }}">Download CV</a>
+      <a class="button-link" href="{{ '/assets/cv/daniel-aronoff-cv.pdf' | relative_url }}">Download CV</a>
     </div>
-    <object class="cv-preview" data="{{ '/assets/cv/daniel-joseph-aronoff-cv.pdf' | relative_url }}#view=FitH" type="application/pdf">
-      <p>PDF preview is not available in this browser. <a href="{{ '/assets/cv/daniel-joseph-aronoff-cv.pdf' | relative_url }}">Download the CV instead.</a></p>
+    <object class="cv-preview" data="{{ '/assets/cv/daniel-aronoff-cv.pdf' | relative_url }}#view=FitH" type="application/pdf">
+      <p>PDF preview is not available in this browser. <a href="{{ '/assets/cv/daniel-aronoff-cv.pdf' | relative_url }}">Download the CV instead.</a></p>
     </object>
   </section>
 

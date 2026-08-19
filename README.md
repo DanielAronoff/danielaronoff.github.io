@@ -1,6 +1,6 @@
-# Daniel Joseph Aronoff: Academic Website
+# Daniel Aronoff: Academic Website
 
-This repository is a custom Jekyll site for Daniel Joseph Aronoff's academic website. The design is intentionally restrained: editorial typography, a strong grid, monochrome surfaces, thin rules, and a muted accent.
+This repository is a custom Jekyll site for Daniel Aronoff's academic website. The design is intentionally restrained: editorial typography, a strong grid, monochrome surfaces, thin rules, and a muted accent.
 
 ## Local setup
 
@@ -45,7 +45,7 @@ touch docs/.nojekyll
 
 ## Replacing the portrait
 
-Replace [`assets/img/daniel-joseph-aronoff-portrait.jpeg`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/assets/img/daniel-joseph-aronoff-portrait.jpeg) with a new image at the same path, or update the path referenced in:
+Replace [`assets/img/daniel-aronoff-portrait.jpeg`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/assets/img/daniel-aronoff-portrait.jpeg) with a new image at the same path, or update the path referenced in:
 
 - [`_config.yml`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_config.yml)
 - [`_layouts/home.html`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/_layouts/home.html)
@@ -54,7 +54,7 @@ Replace [`assets/img/daniel-joseph-aronoff-portrait.jpeg`](/Users/danielaronoff/
 
 The canonical public CV lives at:
 
-- [`assets/cv/daniel-joseph-aronoff-cv.pdf`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/assets/cv/daniel-joseph-aronoff-cv.pdf)
+- [`assets/cv/daniel-aronoff-cv.pdf`](/Users/danielaronoff/Documents/GitHub/danielaronoff.github.io/assets/cv/daniel-aronoff-cv.pdf)
 
 After replacing it, review:
 

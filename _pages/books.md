@@ -5,7 +5,7 @@ nav: true
 nav_title: Books and Chapters
 nav_order: 4
 permalink: /books/
-description: Books and chapters by Daniel Joseph Aronoff.
+description: Books and chapters by Daniel Aronoff.
 ---
 <section class="book-list">
   {% for book in site.data.books %}

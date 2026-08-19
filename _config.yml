@@ -1,5 +1,5 @@
-title: "Daniel Joseph Aronoff: Academic Website"
-description: "Daniel Joseph Aronoff (Dan J. Aronoff, Dan Aronoff) is an economist at MIT working at the intersection of market design, cryptography, and digital currencies."
+title: "Daniel Aronoff: Academic Website"
+description: "Daniel Aronoff (Dan J. Aronoff, Dan Aronoff) is an economist at MIT working at the intersection of market design, cryptography, and digital currencies."
 url: "https://danielaronoff.github.io"
 baseurl: ""
 # Override this with your primary canonical domain.
@@ -8,7 +8,7 @@ seo_base_url: "https://danielaronoff.github.io"
 lang: "en"
 timezone: "America/New_York"
 author:
-  name: "Daniel Joseph Aronoff"
+  name: "Daniel Aronoff"
   email: "daronoff@mit.edu"
   url: "https://danielaronoff.github.io"
   same_as:
@@ -27,7 +27,7 @@ defaults:
     scope:
       path: ""
     values:
-      image: "/assets/img/daniel-joseph-aronoff-portrait.jpeg"
+      image: "/assets/img/daniel-aronoff-portrait.jpeg"
 exclude:
   - README.md
   - Gemfile

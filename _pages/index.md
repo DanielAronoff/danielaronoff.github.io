@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Daniel Joseph Aronoff
+title: Daniel Aronoff
 nav: true
 nav_title: Home
 nav_order: 1
